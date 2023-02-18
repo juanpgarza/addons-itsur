@@ -41,4 +41,5 @@
         'views/account_payment_views.xml',
         'views/res_users_views.xml',        
     ],
+    'installable': False,
 }

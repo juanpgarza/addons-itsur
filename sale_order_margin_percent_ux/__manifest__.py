@@ -6,7 +6,7 @@
     "website": "",
     "author": "",
     "license": "AGPL-3",
-    "installable": True,
+    "installable": False,
     "depends": [
         'sale_margin',
         'pronto'

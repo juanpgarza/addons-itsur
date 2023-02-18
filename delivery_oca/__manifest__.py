@@ -23,5 +23,5 @@
         'security/ir.model.access.csv',
         'data/zona_oca_data.xml',
     ],
-    'installable': True,
+    'installable': False,
 }

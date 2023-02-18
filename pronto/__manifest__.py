@@ -65,4 +65,5 @@
         'views/report_stockpicking_operations.xml',        
         'data/pronto_data.xml',        
     ],
+    'installable': False,
 }

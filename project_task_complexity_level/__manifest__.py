@@ -22,5 +22,5 @@
         'views/project_task_views.xml',
         'views/project_task_complexity_views.xml',        
     ],
-    'installable': True,
+    'installable': False,
 }
