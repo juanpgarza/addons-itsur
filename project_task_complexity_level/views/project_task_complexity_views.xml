@@ -13,7 +13,7 @@
         <field name="name">Lista de complejidad de tareas</field>
         <field name="model">project.task.complexity.level</field>
         <field name="arch" type="xml">
-            <tree default_order='sequence'>
+            <tree>
                 <field name="sequence"
                        widget="handle"/>
                 <field name="name"/>
