@@ -115,8 +115,8 @@ class ProductTemplate(models.Model):
                 # if not item_lista_precio:
                 #     mensaje_validacion += "- precio en la tarifa Costo \n"
 
-                proveedores = self.seller_ids
-                if not proveedores:
+                # proveedores = self.seller_ids
+                if not values['seller_ids']:
                     mensaje_validacion += "- Proveedor \n"
 
             if mensaje_validacion:
