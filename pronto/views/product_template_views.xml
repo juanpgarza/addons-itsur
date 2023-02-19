@@ -51,19 +51,25 @@
                 <field name="excluir_calculo_markup" />
             </field>
 
-            <xpath expr="//tree/field[@name='fixed_price']" position="replace">
+            <!-- 
+            en v15 no está mas la tree de precios en el form. Ahora se accede a la misma información
+            desde el smartbutton "Precio Extra"
+            <xpath expr="//tree/field[@name='fixed_price']" position="replace"> -->
                 <!-- original -->
                 <!-- <field name="fixed_price" string="Price" required="1" widget="monetary" options="{'currency_field': 'currency_id'}"/> -->
                 <!-- le saco el widget -->                
-                <field name="fixed_price" string="Price" required="1" />
-            </xpath>
+                <!-- <field name="fixed_price" string="Price" required="1" />
+            </xpath> -->
             <page name="inventory" position="attributes">
                 <attribute name="groups">stock.group_stock_user,product.group_stock_packaging,pronto.group_compras_crear_modificar_productos</attribute>
             </page>
+            <!-- 
+            en v15 no está mas la tree de precios en el form. Ahora se accede a la misma información
+            desde el smartbutton "Precio Extra"
             <xpath expr="//tree/field[@name='pricelist_id']" position="attributes">
                 <attribute name="domain">[("id", "=", 2)]</attribute>
                 <attribute name="options">{'no_create': True, 'no_open': True}</attribute>
-            </xpath>
+            </xpath> -->
         </field>
     </record>
 
@@ -102,6 +108,8 @@
         <field name="context">{"search_default_consumable": 1, 'default_type': 'product', 'default_categ_id':0, 'default_uom_id':0, 'default_uom_po_id':0}</field>
     </record>
 
+    <!-- 
+    en v15 no usamos módulos product_pack 
     <record id="product_pack_product_template_form_view_inherit" model="ir.ui.view">
         <field name="name">product.template.pack.form</field>
         <field name="model">product.template</field>
@@ -112,6 +120,6 @@
                             attrs="{'invisible':['|',('pack_component_price', '!=', 'totalized'),('pack_type', '!=', 'detailed')]}"/>
             </field>    
         </field>
-    </record>
+    </record> -->
 
 </odoo>

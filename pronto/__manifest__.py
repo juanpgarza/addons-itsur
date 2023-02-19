@@ -39,7 +39,7 @@
                 # 'sale_stock_ux',
                 # 'stock_ux',
                 # 'account_financial_risk',
-                # 'product',
+                'product',
                 # 'sale_margin'
             ],
 
@@ -47,7 +47,7 @@
     'data': [
         # 'views/report_deliveryslip.xml',
         # 'views/stock_quant_views.xml',        
-        # 'security/pronto_security.xml',
+        'security/pronto_security.xml',
         # 'wizards/partner_risk_exceeded_view.xml',        
         # 'views/stock_return_picking_reason_views.xml',
         # 'wizards/stock_return_picking_views.xml',
@@ -71,7 +71,7 @@
         # 'views/sale_tipo_cliente_views.xml',
         # 'views/stock_picking_views.xml',
         # 'views/product_pricelist_item_views.xml',
-        # 'views/product_template_views.xml',
+        'views/product_template_views.xml',
         # 'views/res_users_views.xml',  
         # 'views/account_payment_group_views.xml',
         # 'views/stock_inventory_views.xml',
