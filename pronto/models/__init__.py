@@ -7,12 +7,12 @@
 # from . import account_check
 # from . import account_payment
 # from . import purchase_order
-# from . import res_partner
+from . import res_partner
 # from . import sale_order
 # from . import company
 # from . import stock_picking
 # from . import stock_picking_return
-# from . import res_users
+from . import res_users
 # from . import stock_inventory
 from . import product_template
 # from . import product_pricelist_item

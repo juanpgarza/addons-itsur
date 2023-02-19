@@ -9,7 +9,7 @@
         <field name="arch" type="xml">
 
             <field name="property_product_pricelist" position="attributes">
-                <attribute name="attrs">{'required': [('customer','=',True)]}</attribute>
+                <attribute name="attrs">{'required': [('is_customer','=',True)]}</attribute>
             </field>
 
         </field>
@@ -22,7 +22,7 @@
         <field name="arch" type="xml">
 
             <field name="sale_type" position="attributes">
-                <attribute name="attrs">{'required': [('customer','=',True)]}</attribute>
+                <attribute name="attrs">{'required': [('is_customer','=',True)]}</attribute>
             </field>
 
         </field>
@@ -35,11 +35,11 @@
         <field name="arch" type="xml">
 
             <field name="zip_id" position="attributes">
-                <attribute name="attrs">{'required': [('customer','=',True),('country_id','=',10)]}</attribute>
+                <attribute name="attrs">{'required': [('is_customer','=',True),('country_id','=',10)]}</attribute>
             </field>
 
             <field name="country_id" position="attributes">
-                <attribute name="attrs">{'required': [('customer','=',True)]}</attribute>
+                <attribute name="attrs">{'required': [('is_customer','=',True)]}</attribute>
             </field>
 
         </field>
@@ -52,7 +52,7 @@
         <field name="arch" type="xml">
 
             <field name="category_id" position="after">
-                <field name="tipo_cliente_id" attrs="{'required': [('customer','=',True)]}"/>
+                <field name="tipo_cliente_id" attrs="{'required': [('is_customer','=',True)]}"/>
             </field>
 
             <field name="email" position="attributes">
@@ -92,7 +92,7 @@
         </field>
     </record>
 
-    <record id="view_partner_form_agent_inherit" model="ir.ui.view">
+    <!-- <record id="view_partner_form_agent_inherit" model="ir.ui.view">
         <field name="name">res.partner.form.agent</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="sale_commission.view_partner_form_agent"/>
@@ -101,13 +101,13 @@
                 <attribute name="groups">sales_team.group_sale_manager,sales_team.group_sale_salesman</attribute>
             </xpath>
         </field>
-    </record>
+    </record> -->
 
     <record id="base.action_partner_form" model="ir.actions.act_window">
         <field name="context">{"search_default_customer":1,"default_sale_type":4,"default_property_payment_term_id":1}</field>
     </record>
 
-    <record id="res_partner_view_risk_inherit" model="ir.ui.view">
+    <!-- <record id="res_partner_view_risk_inherit" model="ir.ui.view">
         <field name="name">res.partner.view.risk</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="account_financial_risk.res_partner_view_risk"/>
@@ -116,6 +116,6 @@
                 <attribute name="groups">pronto.group_gestionar_riesgo_financiero</attribute>
             </xpath>
         </field>
-    </record>
+    </record> -->
 
 </odoo>
