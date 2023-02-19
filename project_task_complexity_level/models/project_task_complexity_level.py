@@ -8,7 +8,6 @@ from odoo import models, fields, api
 class ProjectTaskComplexityLevel(models.Model):
     _name = 'project.task.complexity.level'
     _description = 'Nivel de complejidad de tareas'
-    # _order = 'sequence asc'
     _order = 'project_id,sequence'
 
     name = fields.Char(required=True,
