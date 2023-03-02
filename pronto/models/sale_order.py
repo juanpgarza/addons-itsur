@@ -1,4 +1,5 @@
 from odoo import api, models, fields
+from odoo.exceptions import ValidationError
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
@@ -40,3 +41,15 @@ class SaleOrder(models.Model):
             moneda_destino = self.env.ref('base.ARS')
             compania = self.env.user.company_id
             order.cotizacion = moneda_origen._convert(1,moneda_destino,compania, order.date_order)
+
+    def write(self, values):
+        if self.user_has_groups('pronto.group_commitment_date_required'):
+            if ('state' in values and self.state != 'done' and values['state'] == 'sale') or 'user_requesting_review' in values:
+                    if not self.commitment_date:
+                        raise ValidationError(
+                                'Debe informar la fecha de compromiso'
+                                )
+
+        if self.user_has_groups('pronto.group_ventas_solo_lectura_pedidos'):
+            raise ValidationError("Su usuario solo está habilitado para escribir en el chatter ")        
+        return super(SaleOrder, self).write(values)

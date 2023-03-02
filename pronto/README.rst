@@ -16,3 +16,5 @@ Adaptaciones solicitadas por Pronto:
 #. Mostrar el saldo total adeudado del cliente en el presupuesto (Solo en presupuesto NO se muestra en el pedido)
 #. Calcular y mostrar el peso total de un presupuesto/pedido
 #. Mostrar la cotización del dolar en la fecha del presupuesto/pedido
+#. Fecha de compromiso obligatoria en el presupuesto
+#. Grupo de seguridad para tener acceso de solo lectura al presupuesto/pedido pero pudiendo escribir en el chatter
