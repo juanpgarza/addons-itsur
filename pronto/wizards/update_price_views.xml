@@ -20,11 +20,10 @@
     
     <act_window id="action_update_price_wizard"
             name="Asistente actualización de precios"
-            src_model="product.pricelist"
+            binding_model="product.pricelist"
             res_model="product.pricelist.wizard"
             view_mode="form"
             target="new"
-            multi="False"
     />
 
 </odoo>

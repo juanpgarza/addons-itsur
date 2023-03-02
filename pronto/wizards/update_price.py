@@ -32,7 +32,10 @@ class ProductPricelistWizard(models.TransientModel):
         altas = 0
         for i in list(range(sheet.nrows)):
             default_code = sheet.cell(i, 0).value
-            product = self.env['product.template'].search([('default_code','=',default_code)])
+            if not default_code:
+                raise UserError('ERROR: {}'.format("No se informó el código para la linea", i))
+            # import pdb; pdb.set_trace()
+            product = self.env['product.template'].search([('default_code','=',int(default_code))])
             if not product:
                 raise UserError("El producto con código %s no existe. No se realizará ninguna actualización." % default_code)
 

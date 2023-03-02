@@ -12,3 +12,4 @@ Adaptaciones solicitadas por Pronto:
 #. Diario de venta por defecto para el usuario
 #. Control de antiguedad de precios de costo. Tiene en cuenta fecha última actualización/fecha último control. Registra actividad para usuario responsable. 
 #. Histórico de los cambios en las tarifas (pensado para la tarifa de costo que usa precio fijo)
+#. Asistente (wizard) para actualización de la tarifa de costo (precios fijos en tarifas). Importación de una planilla excel para actualizar precios fijos en tarifas.
