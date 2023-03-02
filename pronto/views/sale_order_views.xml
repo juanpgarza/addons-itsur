@@ -9,6 +9,9 @@
             <field name="payment_term_id" position="before">
                 <field name="total_due" widget='monetary' decoration-danger="total_due &gt; 0" decoration-success="total_due &lt; 0" attrs="{'invisible': [('state', 'in', ['sale', 'done', 'cancel'])]}"/>
             </field>
+            <field name="fiscal_position_id" position="before">
+                <field name="cotizacion"/>
+            </field>            
             <xpath expr="//group[@name='sale_shipping']/div[1]" position="after">                
                 <label for="weight" string="Peso total"/>
                 <div>

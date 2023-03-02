@@ -9,7 +9,12 @@ class SaleOrder(models.Model):
 
     weight = fields.Float(compute='_compute_weight', string='Peso total', readonly=True, store=True)
     weight_uom_name = fields.Char(string='Unidad de peso', compute='_compute_weight_uom_name')
-    
+
+    cotizacion = fields.Float(string='Cotización',
+                            compute='_compute_cotizacion', 
+                            store=True,
+                            help='Cotización del dolar en la fecha del presupuesto/pedido.')
+
     @api.depends('order_line.product_uom_qty')
     def _compute_weight(self):
         for order in self:            
@@ -27,3 +32,11 @@ class SaleOrder(models.Model):
         weight_uom_id = self.env['product.template']._get_weight_uom_id_from_ir_config_parameter()
         for order in self:
             order.weight_uom_name = weight_uom_id.name
+
+    @api.depends('date_order')
+    def _compute_cotizacion(self):
+        for order in self:
+            moneda_origen = self.env.ref('base.USD')
+            moneda_destino = self.env.ref('base.ARS')
+            compania = self.env.user.company_id
+            order.cotizacion = moneda_origen._convert(1,moneda_destino,compania, order.date_order)

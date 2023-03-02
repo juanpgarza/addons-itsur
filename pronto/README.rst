@@ -15,3 +15,4 @@ Adaptaciones solicitadas por Pronto:
 #. Asistente (wizard) para actualización de la tarifa de costo (precios fijos en tarifas). Importación de una planilla excel para actualizar precios fijos en tarifas.
 #. Mostrar el saldo total adeudado del cliente en el presupuesto (Solo en presupuesto NO se muestra en el pedido)
 #. Calcular y mostrar el peso total de un presupuesto/pedido
+#. Mostrar la cotización del dolar en la fecha del presupuesto/pedido
