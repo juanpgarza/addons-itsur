@@ -10,3 +10,5 @@ Adaptaciones solicitadas por Pronto:
 #. (product) Campos requeridos para marcar un producto como Vendible
 #. Campos requeridos para marcar un contacto como Cliente (depende de partner_manual_rank de OCA)
 #. Diario de venta por defecto para el usuario
+#. Control de antiguedad de precios de costo. Tiene en cuenta fecha última actualización/fecha último control. Registra actividad para usuario responsable. 
+#. Histórico de los cambios en las tarifas (pensado para la tarifa de costo que usa precio fijo)

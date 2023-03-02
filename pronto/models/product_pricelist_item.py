@@ -54,7 +54,6 @@ class ProductPricelistItem(models.Model):
             raise ValidationError("Este {} ya tiene precio asignado en esta lista ".format(descripcion))
             # self.env.user.notify_danger(message="Este %s ya tiene precio asignado en esta lista " % descripcion)        
 
-    @api.multi
     def write(self, values):
         res = super(ProductPricelistItem,self).write(values)
         if 'fixed_price' in values:
@@ -73,7 +72,6 @@ class ProductPricelistItem(models.Model):
             res.fecha_ultima_modificacion_precio = fields.Date.context_today(self)
         return res
     
-    @api.multi
     def set_fixed_price(self,item_id,product_tmpl_id,fixed_price):
         item_history = self.env["product.pricelist.item.history"]
         item_history.create({

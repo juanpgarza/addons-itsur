@@ -6,13 +6,22 @@
         <field name="model">product.pricelist.item</field>
         <field name="inherit_id" ref="product.product_pricelist_item_form_view"/>
         <field name="arch" type="xml">
-            <field name="date_end" position="after">
+            <!-- <field name="date_end" position="after">
                 <separator string="Actualización"/>
                 <field name="fecha_ultima_modificacion_precio" readonly="True" force_save="True"/>
 	            <field name="fecha_ultimo_control"/>
                 <field name="usuario_ultimo_control" readonly="True" force_save="True"/> 
-            </field>
+            </field> -->
 
+            <xpath expr="//sheet/group[3]" position="after">
+                <group string="Actualización">
+                    <group name="actualizacion">
+                        <field name="fecha_ultima_modificacion_precio" readonly="True" force_save="True"/>
+                        <field name="fecha_ultimo_control"/>
+                        <field name="usuario_ultimo_control" readonly="True" force_save="True"/> 
+                    </group>
+                </group>
+            </xpath>
             <field name="fixed_price" position="replace">
                 <!-- original -->
                 <!-- <field name="fixed_price" nolabel="1" widget="monetary" options="{'currency_field': 'currency_id'}"/> -->
@@ -20,7 +29,7 @@
                 <field name="fixed_price" nolabel="1" />
             </field>
 
-            <xpath expr="//form/group[3]" position="after">
+            <xpath expr="//sheet" position="after">
             	<div class="oe_chatter">
             		<field name="message_follower_ids" widget="mail_followers"/>
             		<field name="activity_ids" widget="mail_activity"/>
@@ -44,6 +53,3 @@
     </record>
 
 </odoo>
-
-
-
