@@ -54,7 +54,6 @@
         # 'wizards/stock_return_picking_views.xml',
         'views/product_pricelist_item_history_views.xml',
         # 'views/project_task_views.xml',
-        # 'views/product_price_history_views.xml',
         # 'views/mail_activity_view.xml',               
         # 'report/sale_report_pronto.xml',        
         # 'views/sale_views.xml',        
