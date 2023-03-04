@@ -16,6 +16,8 @@ class SaleOrder(models.Model):
                             store=True,
                             help='Cotización del dolar en la fecha del presupuesto/pedido.')
 
+    sale_order_reference = fields.Char("Referencia")
+
     @api.depends('order_line.product_uom_qty')
     def _compute_weight(self):
         for order in self:            
