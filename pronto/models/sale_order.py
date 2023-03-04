@@ -55,3 +55,10 @@ class SaleOrder(models.Model):
         if self.user_has_groups('pronto.group_ventas_solo_lectura_pedidos'):
             raise ValidationError("Su usuario solo está habilitado para escribir en el chatter ")        
         return super(SaleOrder, self).write(values)
+
+    def _prepare_invoice(self):
+        res = super(SaleOrder, self)._prepare_invoice()
+        # import pdb; pdb.set_trace()
+        if self.env.user.sale_journal_id:
+            res['journal_id'] = self.env.user.sale_journal_id.id
+        return res

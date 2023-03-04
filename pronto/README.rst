@@ -19,3 +19,4 @@ Adaptaciones solicitadas por Pronto:
 #. Fecha de compromiso obligatoria en el presupuesto
 #. Grupo de seguridad para tener acceso de solo lectura al presupuesto/pedido pero pudiendo escribir en el chatter
 #. Campo Referencia de Presupuesto / Pedido
+#. Diario de facturación por defecto para el usuario
