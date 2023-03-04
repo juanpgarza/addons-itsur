@@ -62,3 +62,8 @@ class SaleOrder(models.Model):
         if self.env.user.sale_journal_id:
             res['journal_id'] = self.env.user.sale_journal_id.id
         return res
+
+    def _action_confirm(self):
+        super(SaleOrder, self)._action_confirm()
+        for picking in self.picking_ids:
+            self.env['procurement.group'].run_smart_scheduler(picking.id)
