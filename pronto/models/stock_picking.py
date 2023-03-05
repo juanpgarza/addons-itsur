@@ -10,6 +10,8 @@ from odoo.exceptions import UserError
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
+    sale_order_type_id = fields.Many2one(related="sale_id.type_id", string= 'Tipo de venta')
+    
     @api.model
     def _schedule_activity(self,activity_type_id):
 
