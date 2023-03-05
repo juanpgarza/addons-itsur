@@ -11,7 +11,7 @@ from . import res_partner
 from . import sale_order
 from . import company
 from . import stock_picking
-# from . import stock_picking_return
+from . import stock_picking_return
 from . import res_users
 from . import product_template
 from . import product_pricelist_item

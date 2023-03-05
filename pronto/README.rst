@@ -24,3 +24,4 @@ Adaptaciones solicitadas por Pronto:
 #. Bloqueo: No permite validar entregas que tiene asociado pedido con productos pendiente de facturar
 #. Bloqueo: No permite validar entregas que tienen asociadas facturas en estado "Borrador" (requiere de módulo de OCA)
 #. Mostrar el tipo de venta en la orden de entrega
+#. Bloqueo en el wizard de devolución de productos para el caso que intenten devolver más productos de los que indica el pedido
