@@ -46,7 +46,7 @@
 
     # always loaded
     'data': [
-        # 'views/report_deliveryslip.xml',
+        'views/report_deliveryslip.xml',
         'views/stock_quant_views.xml',
         'security/pronto_security.xml',
         # 'wizards/partner_risk_exceeded_view.xml',        

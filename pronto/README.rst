@@ -27,3 +27,4 @@ Adaptaciones solicitadas por Pronto:
 #. Bloqueo en el wizard de devolución de productos para el caso que intenten devolver más productos de los que indica el pedido
 #. Agrupar stock.quant por categoria y categoría padre
 #. Mostrar el valor declarado y la cantidad de paquetes en el reporte: "Operaciones de albaran"
+#. Agrego código de barras al reporte: 'Vale de entrega'
