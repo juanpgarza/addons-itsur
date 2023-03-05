@@ -50,8 +50,6 @@
         # 'views/stock_quant_views.xml',        
         'security/pronto_security.xml',
         # 'wizards/partner_risk_exceeded_view.xml',        
-        # 'views/stock_return_picking_reason_views.xml',
-        # 'wizards/stock_return_picking_views.xml',
         'views/product_pricelist_item_history_views.xml',
         # 'views/project_task_views.xml',
         # 'views/mail_activity_view.xml',               
