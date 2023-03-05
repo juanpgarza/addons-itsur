@@ -21,3 +21,5 @@ Adaptaciones solicitadas por Pronto:
 #. Campo Referencia de Presupuesto / Pedido
 #. Diario de facturación por defecto para el usuario
 #. Planificador inteligente Pronto
+#. Bloqueo: No permite validar entregas que tiene asociado pedido con productos pendiente de facturar
+#. Bloqueo: No permite validar entregas que tienen asociadas facturas en estado "Borrador" (requiere de módulo de OCA)

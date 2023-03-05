@@ -30,7 +30,7 @@
                 # 'sale_order_type',
                 # 'stock',
                 # 'stock_voucher',
-                # 'stock_picking_invoice_link',
+                'stock_picking_invoice_link',
                 # 'purchase_ux',
                 # 'sale_stock_info_popup',
                 # 'sale_ux',
