@@ -24,7 +24,7 @@ from . import product_pricelist
 from . import product_pricelist_item_history
 # from . import project_task
 # from . import stock_return_picking_reason
-# from . import stock_move
-# from . import stock_move_line
+from . import stock_move
+from . import stock_move_line
 # from . import stock_print_stock_voucher
 # from . import stock_quant

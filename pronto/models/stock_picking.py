@@ -7,7 +7,7 @@ from odoo.exceptions import UserError
 # import odoo.addons.decimal_precision as dp
 
 
-class ProntoStockPicking(models.Model):
+class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     @api.model
@@ -40,7 +40,7 @@ class ProntoStockPicking(models.Model):
                 if self.sale_id.order_line.filtered(lambda x: x.qty_invoiced < x.product_uom_qty):
                     raise UserError("El pedido asociado al movimiento tiene productos pendientes de facturar.")
 
-        result = super(ProntoStockPicking,self).button_validate()
+        result = super(StockPicking,self).button_validate()
         # solo en los movimientos de salida
         if (self.picking_type_id.code == 'outgoing'):
             # solo si tienen facturas asociadas.
@@ -53,3 +53,39 @@ class ProntoStockPicking(models.Model):
                         raise UserError("Este movimiento tiene al menos una factura asociada en estado borrador.")
         
         return result
+
+    def do_print_voucher(self):
+        # import pdb; pdb.set_trace()
+        '''This function prints the voucher'''
+        report = self.env['ir.actions.report'].search(
+            [('report_name', '=', 'pronto.report_picking')],
+            limit=1).report_action(self)
+        return report
+
+    def assign_numbers(self, estimated_number_of_pages, book):
+        result = super(StockPicking,self).assign_numbers(estimated_number_of_pages, book)
+
+        cantidad_renglones = self.env['stock.book'].browse(self.book_id.id).lines_per_voucher
+
+        if (cantidad_renglones == 0):
+            raise UserError("Debe configurar la cantidad de renglones para el talonario.")
+
+        vouchers = self.env['stock.picking.voucher'].search([('picking_id','=',self.id)])
+
+        for voucher in vouchers:
+            # movimientos que todavía no tienen remitos asignados
+            moves = self.env['stock.move'].search(['&',('picking_id','=',self.id),('picking_voucher_id','=',False)])
+            renglon = 0
+            for move in moves.filtered(lambda x: x.quantity_done):
+                move.write({'picking_voucher_id': voucher.id})
+                renglon = renglon + 1
+                if renglon >= cantidad_renglones:
+                    break
+            
+        return result
+
+    def clean_voucher_data(self):
+        moves = self.env['stock.move'].search([('picking_id','=',self.id)])
+        for move in moves:
+            move.picking_voucher_id = None
+        result = super(StockPicking,self).clean_voucher_data()
