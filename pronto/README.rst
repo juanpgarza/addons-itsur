@@ -28,3 +28,5 @@ Adaptaciones solicitadas por Pronto:
 #. Agrupar stock.quant por categoria y categoría padre
 #. Mostrar el valor declarado y la cantidad de paquetes en el reporte: "Operaciones de albaran"
 #. Agrego código de barras al reporte: 'Vale de entrega'
+#. Mejoras al módulo mail_activity_board de OCA
+#. Permiso: Ordenes de compras solo lectura (con chatter)

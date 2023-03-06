@@ -25,7 +25,7 @@
                 'base',
                 # 'account_payment_group',
                 'crm',
-                # 'purchase',
+                'purchase',
                 'sale_crm',
                 # 'sale_order_type',
                 'stock',
