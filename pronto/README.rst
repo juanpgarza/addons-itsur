@@ -31,3 +31,4 @@ Adaptaciones solicitadas por Pronto:
 #. Mejoras al módulo mail_activity_board de OCA
 #. Permiso: Ordenes de compras solo lectura (con chatter)
 #. Campo Usuario Referente en las tareas
+#. Permiso para cambiar un Recibo / Orden de pago a Borrador

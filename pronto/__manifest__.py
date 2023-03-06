@@ -68,7 +68,7 @@
         'views/product_pricelist_item_views.xml',
         'views/product_template_views.xml',
         'views/res_users_views.xml',  
-        # 'views/account_payment_group_views.xml',
+        'views/account_payment_group_views.xml',
         'wizards/update_price_views.xml',
         'data/product_stock_data.xml',
         'data/config_parameter.xml',
