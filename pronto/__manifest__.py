@@ -42,6 +42,7 @@
                 'product',
                 # 'sale_margin',
                 'partner_manual_rank',
+                'mail_activity_board',
             ],
 
     # always loaded
@@ -52,7 +53,7 @@
         # 'wizards/partner_risk_exceeded_view.xml',        
         'views/product_pricelist_item_history_views.xml',
         # 'views/project_task_views.xml',
-        # 'views/mail_activity_view.xml',               
+        'views/mail_activity_view.xml',               
         # 'report/sale_report_pronto.xml',        
         # 'views/sale_views.xml',        
         'security/ir.model.access.csv',

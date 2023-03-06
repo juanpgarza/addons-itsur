@@ -16,7 +16,7 @@ from . import stock_rule
 from . import stock_location
 from . import product_pricelist
 # from . import sale_report
-# from . import mail_activity
+from . import mail_activity
 from . import product_pricelist_item_history
 # from . import project_task
 from . import stock_move
