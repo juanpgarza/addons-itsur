@@ -26,4 +26,19 @@
             </group>
         </field>
     </record>
+
+    <record model="ir.ui.view" id="view_task_tree2_inherit">
+        <field name="name">project.task.tree</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2"/>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="id" />
+            </field>
+            <field name="user_id" position="after">
+                <field name="complexity_level_id" />
+            </field>
+        </field>
+    </record>
+
 </odoo>

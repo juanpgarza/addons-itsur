@@ -30,3 +30,4 @@ Adaptaciones solicitadas por Pronto:
 #. Agrego código de barras al reporte: 'Vale de entrega'
 #. Mejoras al módulo mail_activity_board de OCA
 #. Permiso: Ordenes de compras solo lectura (con chatter)
+#. Campo Usuario Referente en las tareas
