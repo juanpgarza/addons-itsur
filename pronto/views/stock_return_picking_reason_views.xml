@@ -11,11 +11,11 @@
 	    </field>
 	</record>
 
-    <act_window id="action_stock_return_picking_reason"  
-            name="Motivos devolución"
-            res_model="stock.return.picking.reason" 
-            view_mode="tree,form"
-            target="current"/>
+    <record id="action_stock_return_picking_reason" model="ir.actions.act_window">
+        <field name="name">Motivos devolución</field>
+        <field name="res_model">stock.return.picking.reason</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
     <menuitem action="action_stock_return_picking_reason" id="menu_stock_return_picking_reason" 
     parent="stock.menu_stock_config_settings" name="Motivos devolución" sequence="2" />

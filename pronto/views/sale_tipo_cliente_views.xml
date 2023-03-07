@@ -11,11 +11,11 @@
 	    </field>
 	</record>
 
-    <act_window id="action_tipo_cliente"  
-            name="Tipos de cliente"
-            res_model="sale.tipo.cliente" 
-            view_mode="tree,form"
-            target="current"/>
+    <record id="action_tipo_cliente" model="ir.actions.act_window">
+        <field name="name">Tipos de cliente</field>
+        <field name="res_model">sale.tipo.cliente</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
     <menuitem action="action_tipo_cliente" id="menu_tipo_cliente" 
     parent="sale.menu_sale_config" name="Tipo de cliente" sequence="2" />
