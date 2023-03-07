@@ -22,7 +22,7 @@
             </field>
             <field name="tag_ids" position="after">
                 <field name="referente_id" />
-                <field name="milestone_id" />
+                <!-- <field name="milestone_id" /> -->
             </field>
         </field>
     </record>
@@ -33,7 +33,7 @@
         <field name="arch" type="xml">
             <field name="name" position="after">
                 <field name="description" string="Descripción"/>
-                <field name="milestone_id" string="Hito"/>
+                <!-- <field name="milestone_id" string="Hito"/> -->
                 <field name="referente_id" />
             </field>
             <group expand="0">
