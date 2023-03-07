@@ -32,3 +32,4 @@ Adaptaciones solicitadas por Pronto:
 #. Permiso: Ordenes de compras solo lectura (con chatter)
 #. Campo Usuario Referente en las tareas
 #. Permiso para cambiar un Recibo / Orden de pago a Borrador
+#. Motivo de devolución de productos

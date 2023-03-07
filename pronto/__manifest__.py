@@ -61,7 +61,9 @@
         'data/config_parameter.xml',
         'views/stock_location_views.xml',
         'views/report_stockpicking_operations.xml',        
-        'data/pronto_data.xml',        
+        'data/pronto_data.xml',
+        'wizards/stock_return_picking_views.xml',
+        'views/stock_return_picking_reason_views.xml',
     ],
     'installable': True,
 }

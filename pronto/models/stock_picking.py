@@ -11,7 +11,8 @@ class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     sale_order_type_id = fields.Many2one(related="sale_id.type_id", string= 'Tipo de venta')
-    
+    reason_id = fields.Many2one(comodel_name="stock.return.picking.reason", string= 'Motivo de devolución')
+
     @api.model
     def _schedule_activity(self,activity_type_id):
 
