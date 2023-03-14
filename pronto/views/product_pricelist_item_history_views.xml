@@ -28,7 +28,6 @@
     <record id="action_product_pricelist_history" model="ir.actions.act_window">
         <field name="name">Histórico de tarifa de costo</field>
         <field name="res_model">product.pricelist.item.history</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="view_product_pricelist_history_tree" />
         <field name="search_view_id" ref="view_product_pricelist_history_search"/>

@@ -11,5 +11,5 @@ class ProjectTask(models.Model):
     referente_id = fields.Many2one(
         comodel_name='res.users',
         string='Referente',
-        track_visibility='onchange',
+        tracking=True,
     )

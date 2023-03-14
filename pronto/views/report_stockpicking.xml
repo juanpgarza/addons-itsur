@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <report
+    <!-- <report
         string="Remito PRONTO"
         id="pronto_action_report_picking"
         model="stock.picking"
         report_type="qweb-pdf"
         name="pronto.report_picking"
-    />
+    /> -->
 
     <template id="report_picking">
         <t t-foreach="docs" t-as="o">
@@ -53,7 +53,7 @@
                             </div>
                             <div class="col-3">
                                 <!-- IVA -->
-                                <span><span t-field="cliente_id.afip_responsability_type_id.name" t-options='{"format": "dd/MM/yyyy"}'/></span>
+                                <span><span t-field="cliente_id.l10n_ar_afip_responsibility_type_id.name" t-options='{"format": "dd/MM/yyyy"}'/></span>
                             </div>
                         </div>
                         <br/>
@@ -64,7 +64,7 @@
                                 <span><t t-esc="cliente_id.street" /> - <t t-esc="cliente_id.city" />  (<t t-esc="cliente_id.zip" />)</span>
                             </div>
                             <div class="col-3">
-                                <span><t t-esc="cliente_id.main_id_number" /> </span>
+                                <span><t t-esc="cliente_id.vat" /> </span>
                             </div>
                         </div>
                         <br/>
@@ -165,4 +165,16 @@
         </t>
         
     </template>
+
+    <record id="action_report_picking" model="ir.actions.report">
+        <field name="name">Remito PRONTO</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">pronto.report_picking</field>
+        <field name="report_file">pronto.report_picking_operations</field>
+        <field name="print_report_name">'Remito PRONTO - %s - %s' % (object.partner_id.name or '', object.name)</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name="binding_type">report</field>
+    </record>
+    
 </odoo>

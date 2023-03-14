@@ -17,14 +17,11 @@
             </form>
         </field>
     </record>
-    
-    <act_window id="action_update_price_wizard"
-            name="Asistente actualización de precios"
-            src_model="product.pricelist"
-            res_model="product.pricelist.wizard"
-            view_mode="form"
-            target="new"
-            multi="False"
-    />
+
+    <record id="action_update_price_wizard" model="ir.actions.act_window">
+        <field name="name">Asistente actualización de precios</field>
+        <field name="res_model">product.pricelist.wizard</field>
+        <field name="view_mode">form</field>
+    </record>
 
 </odoo>

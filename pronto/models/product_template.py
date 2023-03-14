@@ -104,17 +104,19 @@ class ProductTemplate(models.Model):
                     mensaje_validacion += "- peso \n"
                 if values['volume'] == 0:
                     mensaje_validacion += "- volumen \n"
-                if not values['image_medium']:
+                if not values['image_1920']:
                     mensaje_validacion += "- imagen del producto \n"
                 if not values['barcode']:
                     mensaje_validacion += "- codigo de barras \n"
 
-                item_lista_precio = self.item_ids.filtered(lambda x: x.pricelist_id.id == 2)
-                if not item_lista_precio:
-                    mensaje_validacion += "- precio en la tarifa Costo \n"
+                # en v15 no está mas la tree de precios en el form. Ahora se accede a la misma información
+                # desde el smartbutton "Precio Extra"
+                # item_lista_precio = self.item_ids.filtered(lambda x: x.pricelist_id.id == 2)
+                # if not item_lista_precio:
+                #     mensaje_validacion += "- precio en la tarifa Costo \n"
 
-                proveedores = self.seller_ids
-                if not proveedores:
+                # proveedores = self.seller_ids
+                if not values['seller_ids']:
                     mensaje_validacion += "- Proveedor \n"
 
             if mensaje_validacion:
@@ -124,12 +126,12 @@ class ProductTemplate(models.Model):
 
         return res
 
-    @api.multi
     def write(self, values):
-        super(ProductTemplate,self).write(values)        
-        if 'type' in values or 'pack_ok' in values:
-            if self.pack_ok and self.type !='service':
-                raise UserError("El Tipo de producto de los pack´s debe ser 'Servicio'")
+        super(ProductTemplate,self).write(values)
+        # en v15 no usamos módulos product_pack        
+        # if 'type' in values or 'pack_ok' in values:
+        #     if self.pack_ok and self.type !='service':
+        #         raise UserError("El Tipo de producto de los pack´s debe ser 'Servicio'")
         
         controlar_requeridos = self.env.context.get('controlar_requeridos', True)
 
@@ -143,19 +145,21 @@ class ProductTemplate(models.Model):
                     if rec.type == 'product' and rec.sale_ok and rec.volume == 0:
                         mensaje_validacion += "- volumen \n"
 
-                    if rec.type == 'product' and rec.sale_ok and not rec.image_medium:
+                    if rec.type == 'product' and rec.sale_ok and not rec.image_1920:
                         mensaje_validacion += "- imagen del producto \n"
 
                     if rec.type == 'product' and rec.sale_ok and not rec.barcode:
                         mensaje_validacion += "- codigo de barras \n"
 
-                    if rec.type == 'product' and rec.sale_ok:
-                        item_lista_precio = rec.item_ids.filtered(lambda x: x.pricelist_id.id == 2)
-                        if not item_lista_precio:
-                            mensaje_validacion += "- el precio en la tarifa Costo \n"
-                        else:
-                            if item_lista_precio.compute_price == 'fixed' and item_lista_precio.fixed_price == 0:
-                                mensaje_validacion += "- el precio (distinto de 0) en la tarifa Costo \n"
+                    # en v15 no está mas la tree de precios en el form. Ahora se accede a la misma información
+                    # desde el smartbutton "Precio Extra"
+                    # if rec.type == 'product' and rec.sale_ok:
+                    #     item_lista_precio = rec.item_ids.filtered(lambda x: x.pricelist_id.id == 2)
+                    #     if not item_lista_precio:
+                    #         mensaje_validacion += "- el precio en la tarifa Costo \n"
+                    #     else:
+                    #         if item_lista_precio.compute_price == 'fixed' and item_lista_precio.fixed_price == 0:
+                    #             mensaje_validacion += "- el precio (distinto de 0) en la tarifa Costo \n"
 
                     if rec.type == 'product' and rec.sale_ok:
                         proveedores = rec.seller_ids

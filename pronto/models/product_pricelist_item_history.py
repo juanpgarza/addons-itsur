@@ -12,7 +12,7 @@ class ProductPricelistItemHistory(models.Model):
     _rec_name = 'product_tmpl_id'
 
     product_tmpl_id = fields.Many2one('product.template', 'Producto')
-    fixed_price = fields.Float('Precio fijo', digits=dp.get_precision('Product Price'))
+    fixed_price = fields.Float('Precio fijo', digits=('Product Price'))
     pricelist_item_id = fields.Many2one('product.pricelist.item', 'Item de tarifa')
     pricelist_id = fields.Many2one(string="Tarifa", related="pricelist_item_id.pricelist_id")
 

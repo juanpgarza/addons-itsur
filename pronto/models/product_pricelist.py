@@ -11,7 +11,7 @@ _logger = logging.getLogger(__name__)
 class ProductPricelist(models.Model):
     _inherit = 'product.pricelist'
     
-    fixed_price = fields.Float(digits=dp.get_precision('Pricelist Fixed Price'))
+    fixed_price = fields.Float(digits=('Pricelist Fixed Price'))
 
     @api.model
     def _controlar_actualizacion_tarifa_costo(self):
@@ -71,7 +71,6 @@ class ProductPricelist(models.Model):
 
         _logger.info("Se generaron %d actividades.", actividades)
 
-    @api.multi
     def _compute_price_rule(self, products_qty_partner, date=False, uom_id=False):
         res = super(ProductPricelist, self)._compute_price_rule(products_qty_partner,date,uom_id)
         # import pdb; pdb.set_trace()
