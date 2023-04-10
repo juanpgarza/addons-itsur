@@ -107,7 +107,7 @@
         <field name="context">{"search_default_customer":1,"default_sale_type":4,"default_property_payment_term_id":1}</field>
     </record>
 
-    <!-- <record id="res_partner_view_risk_inherit" model="ir.ui.view">
+    <record id="res_partner_view_risk_inherit" model="ir.ui.view">
         <field name="name">res.partner.view.risk</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="account_financial_risk.res_partner_view_risk"/>
@@ -116,6 +116,6 @@
                 <attribute name="groups">pronto.group_gestionar_riesgo_financiero</attribute>
             </xpath>
         </field>
-    </record> -->
+    </record>
 
 </odoo>

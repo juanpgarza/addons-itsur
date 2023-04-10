@@ -33,3 +33,4 @@ Adaptaciones solicitadas por Pronto:
 #. Campo Usuario Referente en las tareas
 #. Permiso para cambiar un Recibo / Orden de pago a Borrador
 #. Motivo de devolución de productos
+#. Grupo de seguridad: "Gestionar riesgo financiero"
