@@ -108,8 +108,6 @@
         <field name="context">{"search_default_consumable": 1, 'default_type': 'product', 'default_categ_id':0, 'default_uom_id':0, 'default_uom_po_id':0}</field>
     </record>
 
-    <!-- 
-    en v15 no usamos módulos product_pack 
     <record id="product_pack_product_template_form_view_inherit" model="ir.ui.view">
         <field name="name">product.template.pack.form</field>
         <field name="model">product.template</field>
@@ -120,6 +118,6 @@
                             attrs="{'invisible':['|',('pack_component_price', '!=', 'totalized'),('pack_type', '!=', 'detailed')]}"/>
             </field>    
         </field>
-    </record> -->
+    </record>
 
 </odoo>

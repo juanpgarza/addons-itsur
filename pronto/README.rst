@@ -34,3 +34,4 @@ Adaptaciones solicitadas por Pronto:
 #. Permiso para cambiar un Recibo / Orden de pago a Borrador
 #. Motivo de devolución de productos
 #. Grupo de seguridad: "Gestionar riesgo financiero"
+#. Opción para permitir ocultar los componentes de los pack en el presupuesto web
