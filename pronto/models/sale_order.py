@@ -45,16 +45,24 @@ class SaleOrder(models.Model):
             order.cotizacion = moneda_origen._convert(1,moneda_destino,compania, order.date_order)
 
     def write(self, values):
-        if self.user_has_groups('pronto.group_commitment_date_required'):
-            if ('state' in values and self.state != 'done' and values['state'] == 'sale') or 'user_requesting_review' in values:
-                    if not self.commitment_date:
-                        raise ValidationError(
-                                'Debe informar la fecha de compromiso'
-                                )
+        for order in self:
+            if self.user_has_groups('pronto.group_commitment_date_required'):
+                if ('state' in values and order.state != 'done' and values['state'] == 'sale') or 'user_requesting_review' in values:
+                        if not order.commitment_date:
+                            raise ValidationError(
+                                    'Debe informar la fecha de compromiso'
+                                    )
 
-        if self.user_has_groups('pronto.group_ventas_solo_lectura_pedidos'):
-            raise ValidationError("Su usuario solo está habilitado para escribir en el chatter ")        
-        return super(SaleOrder, self).write(values)
+            if self.user_has_groups('pronto.group_ventas_solo_lectura_pedidos'):
+                raise ValidationError("Su usuario solo está habilitado para escribir en el chatter ")
+
+        res = super(SaleOrder, self).write(values)
+        for order in self:
+            if 'order_line' in values:
+                lineas_pack_totalizado = order.order_line.filtered(lambda line: line.product_id.pack_ok and line.product_id.pack_component_price == 'totalized')
+                if lineas_pack_totalizado:
+                    lineas_pack_totalizado._compute_purchase_price_totalized_pack()
+        return res
 
     def _prepare_invoice(self):
         res = super(SaleOrder, self)._prepare_invoice()
