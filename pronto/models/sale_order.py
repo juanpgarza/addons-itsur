@@ -75,3 +75,8 @@ class SaleOrder(models.Model):
         super(SaleOrder, self)._action_confirm()
         for picking in self.picking_ids:
             self.env['procurement.group'].run_smart_scheduler(picking.id)
+
+    @api.depends('order_line.margin','order_line.product_id.excluir_calculo_markup')
+    def _product_margin(self):
+        for order in self:
+            order.margin = sum(order.order_line.filtered(lambda r: r.state != 'cancel' and not r.excluir_markup).mapped('margin'))
