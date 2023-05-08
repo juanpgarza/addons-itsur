@@ -20,13 +20,13 @@ class SaleOrderLine(models.Model):
             else:
                 rec.excluir_markup = False
 
-    @api.depends('price_subtotal', 'product_uom_qty', 'purchase_price')
-    def _compute_margin(self):
-        super(SaleOrderLine,self)._compute_margin()
-        for line in self:
-            if line.excluir_markup:
-                line.margin = 0
-                line.margin_percent = 0
+    # @api.depends('price_subtotal', 'product_uom_qty', 'purchase_price')
+    # def _compute_margin(self):
+    #     super(SaleOrderLine,self)._compute_margin()
+    #     for line in self:
+    #         if line.excluir_markup:
+    #             line.margin = 0
+    #             line.margin_percent = 0
             # else:
             #     line.margin = line.price_subtotal - (line.purchase_price * line.product_uom_qty)
             #     line.margin_percent = line.price_subtotal and line.margin/line.price_subtotal
