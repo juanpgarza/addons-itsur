@@ -50,7 +50,24 @@ class SaleOrder(models.Model):
                             uom=line.product_uom.id,
                             fiscal_position=line.env.context.get('fiscal_position')
                         )
-                        precio_unitario_actual = round(self.env['account.tax']._fix_tax_included_price_company(line._get_display_price(product), product.taxes_id, line.tax_id, line.company_id),2)
+
+                        if line.product_id.pack_ok and line.product_id.pack_component_price == 'totalized':
+                            # addons-OCA/product-pack/product_pack/models/product_product.py:33
+                            prices = product.price_compute(price_type='non_detailed',currency=line.order_id.pricelist_id.currency_id)
+                            precio_unitario_actual = round(prices[line.product_id.id],2)
+                            # import pdb; pdb.set_trace()
+                        else:              
+                            precio_unitario_actual = round(self.env['account.tax']._fix_tax_included_price_company(line._get_display_price(product), product.taxes_id, line.tax_id, line.company_id),2)
+
+                        # precio_unitario_actual = round(product._get_tax_included_unit_price(
+                        #     line.company_id or line.order_id.company_id,
+                        #     line.order_id.currency_id,
+                        #     line.order_id.date_order,
+                        #     'sale',
+                        #     fiscal_position=line.order_id.fiscal_position_id,
+                        #     product_price_unit=line._get_display_price(product),
+                        #     product_currency=line.order_id.currency_id
+                        # ))
 
                         precio_unitario = round(line.price_unit,2)
 
