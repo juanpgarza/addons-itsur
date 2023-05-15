@@ -26,28 +26,18 @@ class ProcurementGroup(models.Model):
         # Reserva auto. el stock (10 días antes)#
         dias_registrar_actividad = int(self.env['ir.config_parameter'].sudo().search([('key','=','pronto.dias_registrar_actividad')]).value)
         dias_reservar = int(self.env['ir.config_parameter'].sudo().search([('key','=','pronto.dias_reservar')]).value)
-        log_path = '/opt/odoo/logs/smart_scheduler/'
-
-        if not os.path.exists(log_path):
-            os.mkdir(log_path)
-        
-        self.limpiar_log(log_path,14)
 
         if picking_id:            
             # archivo_log = '/opt/odoo/run_smart_scheduler__log-OE-{}.txt'.format(picking_id)
 
             picking_ids = list()
             picking_ids.append(self.env['stock.picking'].browse(picking_id))
-        else:
-            archivo_log = log_path + 'run_smart_scheduler__log-{}.txt'.format(fields.Date.context_today(self))
+        else:            
             # ATENCION: puede estar 'assigned' y que todavía le falte una parte para reservar
             picking_ids = self.env['stock.picking'].search([
                                 ('state','in',['confirmed','assigned']),
                                 ('picking_type_code','=','outgoing'),
                                 ('scheduled_date','<=',fields.Date.context_today(self) + timedelta(days=dias_registrar_actividad))])
-            log = open(archivo_log,'w')
-            log.write('{} \n'.format(fields.Datetime.now()))
-            log.close()
 
         model_stock_picking = self.env.ref('stock.model_stock_picking')
         activity_type_id = self.env.ref('pronto.contactar_cliente_reserva_stock')
@@ -71,7 +61,6 @@ class ProcurementGroup(models.Model):
                 if (delta.days == dias_registrar_actividad or delta.days < 0) and picking.create_date.date() != fields.Date.context_today(self):    
                     activity = picking._schedule_activity(activity_type_id)
                     line = linea1 + ' - Actividad'
-                    # self.escribir_log(archivo_log, line)
 
             # esta dentro del periodo de reserva? 10 días antes
             if delta.days <= dias_reservar:
@@ -92,9 +81,6 @@ class ProcurementGroup(models.Model):
             else:
                 line = linea1 + ' - Proximo a reserva automatica'
 
-            # para que no logee los pedidos
-            if not picking_id:
-                self.escribir_log(archivo_log, line)
 
         ### 2 ###
         # Registra actividad "reconfirmar retiro" 1 día antes
@@ -114,16 +100,3 @@ class ProcurementGroup(models.Model):
 
         return
 
-    @api.model
-    def escribir_log(self,archivo_log,line):
-        with open(archivo_log, 'a') as the_file:
-            the_file.write(line + '\n')
-
-    @api.model
-    def limpiar_log(self,log_path,mantener_dias):
-        today = datetime.datetime.today()
-        for i in glob.glob(log_path + '*'):
-            t = os.stat(i)[8]
-            filetime = datetime.datetime.fromtimestamp(t) - today
-            if filetime.days <= -mantener_dias:                
-                os.remove(i)
