@@ -11,7 +11,22 @@ from odoo.exceptions import UserError, ValidationError
 class PurchaseOrder(models.Model):
     _inherit = 'purchase.order'
 
-    picking_type_id = fields.Many2one(default=False)
+    # picking_type_id = fields.Many2one(default=False)
+
+    # No funciona!
+    # @api.model
+    # def _default_picking_type(self):
+    #     import pdb; pdb.set_trace()
+    #     return False
+    
+    # No funciona!
+    # @api.model
+    # def default_get(self, fields):
+    #     rec = super(PurchaseOrder, self).default_get(fields)
+    #     import pdb; pdb.set_trace()
+    #     rec['picking_type_id'] = False
+
+    #     return rec
 
     # No se esta usando? 06/03/2023
     # def actualizar_costos(self):

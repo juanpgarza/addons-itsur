@@ -35,6 +35,7 @@
                 'partner_manual_rank',
                 'mail_activity_board',
                 'project',
+                # 'purchase_stock',
             ],
 
     # always loaded
