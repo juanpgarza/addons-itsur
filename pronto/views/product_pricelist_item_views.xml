@@ -22,12 +22,6 @@
                     </group>
                 </group>
             </xpath>
-            <field name="fixed_price" position="replace">
-                <!-- original -->
-                <!-- <field name="fixed_price" nolabel="1" widget="monetary" options="{'currency_field': 'currency_id'}"/> -->
-                <!-- le saco el widget -->
-                <field name="fixed_price" nolabel="1" />
-            </field>
 
             <xpath expr="//sheet" position="after">
             	<div class="oe_chatter">
