@@ -58,7 +58,7 @@ class ProductTemplate(models.Model):
         else:            
             param = self.env['ir.config_parameter'].sudo()
             tasa_actualizacion_costo = float(param.get_param('pronto.tasa_actualizacion_costo'))
-            tasa_actual = res_currency.rate
+            tasa_actual = pricelist.currency_id.inverse_rate
             # HACER SOLO si cambia la cotización
             if tasa_actualizacion_costo != tasa_actual:
                 _logger.info("Iniciando la actualizacion de costos.")
