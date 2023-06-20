@@ -31,8 +31,8 @@
                 'stock_voucher',
                 'stock_picking_invoice_link',
                 'stock_ux',
-                'product',
                 'partner_manual_rank',
+                'product',
                 'mail_activity_board',
                 'project',
                 # 'purchase_stock',
@@ -66,7 +66,7 @@
         'data/pronto_data.xml',
         'wizards/stock_return_picking_views.xml',
         'views/stock_return_picking_reason_views.xml',
-        'views/sale_portal_templates.xml',
+        'views/sale_portal_templates.xml', # daba error en el upgrade
         'views/sale_views.xml',
     ],
     'installable': True,

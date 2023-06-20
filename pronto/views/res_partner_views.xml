@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-
-    <record id="view_partner_property_form_inherit" model="ir.ui.view">
-        <field name="name">res.partner.form</field>
-        <field name="model">res.partner</field>
-        <field name="inherit_id" ref="product.view_partner_property_form"/>
-        <field name="arch" type="xml">
-
-            <field name="property_product_pricelist" position="attributes">
-                <attribute name="attrs">{'required': [('is_customer','=',True)]}</attribute>
-            </field>
-
-        </field>
-    </record>
-
     <record id="res_partner_sale_type_form_view_inherit" model="ir.ui.view">
         <field name="name">res.partner.form</field>
         <field name="model">res.partner</field>
@@ -115,6 +101,22 @@
             <xpath expr="//page[@name='financial_risk']" position="attributes">
                 <attribute name="groups">pronto.group_gestionar_riesgo_financiero</attribute>
             </xpath>
+        </field>
+    </record>
+
+    <!-- # daba error en el upgrade 
+        lo cambie al final del archivo y funciono OK
+    -->
+    <record id="view_partner_property_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="product.view_partner_property_form"/>
+        <field name="arch" type="xml">
+
+            <field name="property_product_pricelist" position="attributes">
+                <attribute name="attrs">{'required': [('is_customer','=',True)]}</attribute>
+            </field>
+
         </field>
     </record>
 
