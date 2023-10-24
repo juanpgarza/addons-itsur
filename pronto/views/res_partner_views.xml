@@ -93,6 +93,10 @@
         <field name="context">{"search_default_customer":1,"default_sale_type":4,"default_property_payment_term_id":1}</field>
     </record>
 
+    <record id="contacts.action_contacts" model="ir.actions.act_window">
+        <field name="context">{'default_is_company': True, 'res_partner_search_mode': 'customer'}</field>
+    </record>
+
     <record id="res_partner_view_risk_inherit" model="ir.ui.view">
         <field name="name">res.partner.view.risk</field>
         <field name="model">res.partner</field>
