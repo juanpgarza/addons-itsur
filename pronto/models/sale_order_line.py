@@ -4,6 +4,9 @@ from odoo.exceptions import ValidationError
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
+    costo_total_pesos = fields.Float(string = 'Costo total pesos', compute='_computed_costo_total_pesos', readonly=False, store=True)
+    precio_total_pesos = fields.Float(string = 'Precio total pesos', compute='_computed_precio_total_pesos', readonly=False, store=True, copy=False)
+
     excluir_markup = fields.Boolean(string="Excluir del calculo del mark-up (Porcentaje) en los pedidos",
                     compute='_computed_excluir_markup', 
                     readonly=False, 
@@ -19,6 +22,46 @@ class SaleOrderLine(models.Model):
                     rec.excluir_markup = True
             else:
                 rec.excluir_markup = False
+
+    @api.depends('product_id', 'product_uom_qty','purchase_price')
+    def _computed_costo_total_pesos(self):
+        # import pdb; pdb.set_trace()
+
+        for rec in self:        
+            if rec.display_type:
+                # es una sección
+                continue
+
+            costo_total_pesos = rec.product_uom_qty * rec.purchase_price
+            if rec.order_id.pricelist_id.currency_id != rec.env.user.company_id.currency_id:
+                rec.costo_total_pesos = costo_total_pesos * rec.order_id.cotizacion
+            else:
+                rec.costo_total_pesos = costo_total_pesos
+
+    @api.depends('product_id', 'product_uom_qty','purchase_price', 'price_unit', 'order_id.pricelist_id', 'discount')    
+    def _computed_precio_total_pesos(self,precio_total=False):
+        # se llama desde lo módulo clima
+        # clima es el que determina el precio_total (sin desc. clima)
+        
+        for rec in self:
+            if rec.display_type:
+                # es una sección
+                continue
+            
+            if precio_total:
+                precio_total_pesos = precio_total
+            else:
+                precio_total_pesos = rec.price_subtotal
+                
+            # precio_total_pesos = rec.product_uom_qty * rec.price_unit
+            if rec.order_id.pricelist_id.currency_id != rec.env.user.company_id.currency_id:
+                rec.precio_total_pesos = precio_total_pesos * rec.order_id.cotizacion
+            else:
+                rec.precio_total_pesos = precio_total_pesos
+    
+            if rec.product_id.pack_ok and rec.product_id.pack_type == 'detailed' and rec.product_id.pack_component_price == 'detailed':
+                # el precio_total_pesos está en los componentes del pack
+                rec.precio_total_pesos = 0
 
     # @api.depends('price_subtotal', 'product_uom_qty', 'purchase_price')
     # def _compute_margin(self):

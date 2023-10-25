@@ -18,7 +18,7 @@
     # Check https://github.com/odoo/odoo/blob/12.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    "version": "15.0.1.5.0",
+    "version": "15.0.2.0.0",
 
     # any module necessary for this one to work correctly
     'depends': [
@@ -68,6 +68,7 @@
         'views/stock_return_picking_reason_views.xml',
         'views/sale_portal_templates.xml', # daba error en el upgrade
         'views/sale_views.xml',
+        'report/sale_report_pronto.xml',
     ],
     'installable': True,
 }
