@@ -11,6 +11,13 @@ from odoo.exceptions import UserError, ValidationError
 class PurchaseOrder(models.Model):
     _inherit = 'purchase.order'
 
+
+    @api.onchange('partner_id')
+    def _onchange_partner_id(self):
+        if not self.partner_id:
+            # para que borre el "Entregar a" por defecto
+            self.picking_type_id = False
+
     # picking_type_id = fields.Many2one(default=False)
 
     # No funciona!
