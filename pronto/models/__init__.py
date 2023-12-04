@@ -12,7 +12,7 @@ from . import res_users
 from . import product_template
 from . import product_pricelist_item
 from . import stock_rule
-from . import product_product
+# from . import product_product
 from . import stock_location
 from . import product_pricelist
 from . import mail_activity
