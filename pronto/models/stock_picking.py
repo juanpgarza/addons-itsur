@@ -40,7 +40,7 @@ class StockPicking(models.Model):
         if (self.picking_type_id.code == 'outgoing'):
             # Control de productos agregados al pedido pero que no se facturaron
             if not self.user_has_groups('pronto.group_stock_omitir_bloqueo_pendiente_facturar'):
-                if self.sale_id.order_line.filtered(lambda x: x.qty_invoiced < x.product_uom_qty):
+                if self.sale_id.order_line.filtered(lambda x: x.qty_invoiced < (x.product_uom_qty - x.quantity_returned)):
                     raise UserError("El pedido asociado al movimiento tiene productos pendientes de facturar.")
 
         result = super(StockPicking,self).button_validate()
