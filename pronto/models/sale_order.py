@@ -75,7 +75,9 @@ class SaleOrder(models.Model):
         super(SaleOrder, self)._action_confirm()
         for picking in self.picking_ids:
             self.env['procurement.group'].run_smart_scheduler(picking.id)
-
+        for line in self.order_line.filtered(lambda x: x.product_id.type == 'service' and x.product_id.entregar_al_confirmar_prespuesto):
+            line.qty_delivered = line.product_uom_qty
+            
     @api.depends('order_line.margin','order_line.product_id.excluir_calculo_markup')
     def _product_margin(self):
         for order in self:
