@@ -34,6 +34,8 @@
                 'product',
                 'mail_activity_board',
                 'project',
+                'base_location',
+                'sale_product_pack',
                 # 'purchase_stock',
             ],
 
@@ -43,8 +45,8 @@
         'views/stock_quant_views.xml',
         'security/pronto_security.xml',
         'views/product_pricelist_item_history_views.xml',
-        'views/project_task_views.xml',
-        'views/mail_activity_view.xml',               
+        # 'views/project_task_views.xml',
+        # 'views/mail_activity_view.xml',               
         'security/ir.model.access.csv',
         'views/company.xml',
         'views/crm_lead_views.xml',
@@ -56,7 +58,7 @@
         'views/product_pricelist_item_views.xml',
         'views/product_template_views.xml',
         'views/res_users_views.xml',  
-        'views/account_payment_group_views.xml',
+        # 'views/account_payment_group_views.xml',
         'wizards/update_price_views.xml',
         'data/product_stock_data.xml',
         'data/config_parameter.xml',
@@ -65,9 +67,9 @@
         'data/pronto_data.xml',
         'wizards/stock_return_picking_views.xml',
         'views/stock_return_picking_reason_views.xml',
-        'views/sale_portal_templates.xml', # daba error en el upgrade
-        'views/sale_views.xml',
-        'report/sale_report_pronto.xml',
+        # 'views/sale_portal_templates.xml', # daba error en el upgrade
+        # 'views/sale_views.xml',
+        # 'report/sale_report_pronto.xml',
     ],
     'installable': True,
 }
