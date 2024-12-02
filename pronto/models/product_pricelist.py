@@ -71,7 +71,7 @@ class ProductPricelist(models.Model):
 
         _logger.info("Se generaron %d actividades.", actividades)
 
-    def _compute_price_rule(self, products_qty_partner, date=False, uom_id=False):
-        res = super(ProductPricelist, self)._compute_price_rule(products_qty_partner,date,uom_id)
-        # import pdb; pdb.set_trace()
-        return res    
+    # def _compute_price_rule(self, products_qty_partner, date=False, uom_id=False):
+    #     res = super(ProductPricelist, self)._compute_price_rule(products_qty_partner,date,uom_id)
+    #     # import pdb; pdb.set_trace()
+    #     return res    

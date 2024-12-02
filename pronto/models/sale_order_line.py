@@ -99,7 +99,7 @@ class SaleOrderLine(models.Model):
         #     product_cost = line.product_id.standard_price
         #     line.purchase_price = line._convert_price(product_cost, line.product_id.uom_id)
 
-    @api.model
+    @api.model_create_multi
     def create(self,values):
         line = super(SaleOrderLine,self).create(values)
         if line.product_id.pack_ok and line.product_id.pack_component_price == 'totalized':

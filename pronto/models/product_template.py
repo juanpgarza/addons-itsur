@@ -90,7 +90,7 @@ class ProductTemplate(models.Model):
 
                 _logger.info("Se actualizo el costo de %d productos.", len(materias_primas) + len(productos_fabricados))
 
-    @api.model
+    @api.model_create_multi
     def create(self,values):
         # import pdb; pdb.set_trace()
         if 'type' in values and 'pack_ok' in values:
