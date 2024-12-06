@@ -21,21 +21,23 @@
 
     # any module necessary for this one to work correctly
     'depends': [
-                'base',
-                'crm',
-                'purchase',
-                'sale_crm',
-                'sale_margin',
-                'stock',
-                'stock_voucher',
-                'stock_picking_invoice_link',
-                'stock_ux',
-                'partner_manual_rank',
-                'product',
-                'mail_activity_board',
-                'project',
-                'base_location',
-                'sale_product_pack',
+                'base', # core
+                'crm', # core
+                'purchase', # core
+                'sale_crm', # core
+                'sale_margin', # core
+                'stock', # core
+                'sale_stock', # core
+                'stock_voucher', # adhoc
+                'stock_picking_invoice_link', # OCA
+                'stock_ux', # adhoc
+                'partner_manual_rank', # OCA
+                'product', # core
+                'mail_activity_board', # OCA
+                'project', # core
+                'base_location', # OCA
+                'sale_product_pack', # OCA
+                'sale_order_type', # OCA
                 # 'purchase_stock',
             ],
 
