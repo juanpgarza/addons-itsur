@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Level of complexity of project tasks",
-    "version": "15.0.1.0.0",
+    "version": "17.0.1.0.0",
     "author": "juanpgarza",
     "website": "https://github.com/juanpgarza/addons-itsur",
 
@@ -22,5 +22,5 @@
         'views/project_task_views.xml',
         'views/project_task_complexity_views.xml',        
     ],
-    'installable': False,
+    'installable': True,
 }
