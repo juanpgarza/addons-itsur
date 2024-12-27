@@ -100,17 +100,12 @@ class SaleOrderLine(models.Model):
         #     line.purchase_price = line._convert_price(product_cost, line.product_id.uom_id)
 
     @api.model_create_multi
-    def create(self,values):
-        line = super(SaleOrderLine,self).create(values)
-        if line.product_id.pack_ok and line.product_id.pack_component_price == 'totalized':
-            line._compute_purchase_price_totalized_pack()
-            # import pdb; pdb.set_trace()
-            # total_purchase_price = 0
-            # for subline in line.pack_child_line_ids:
-            #     product_cost = subline.product_id.standard_price
-            #     total_purchase_price += subline._convert_price(product_cost, subline.product_id.uom_id)
-            # line.purchase_price = total_purchase_price
-        return line
+    def create(self,vals_list):
+        res = super(SaleOrderLine,self).create(vals_list)
+        for line in res:
+            if line.product_id.pack_ok and line.product_id.pack_component_price == 'totalized':
+                line._compute_purchase_price_totalized_pack()
+        return res
 
     # def write(self, values):
     #     super(SaleOrderLine,self).write(values)
@@ -124,5 +119,6 @@ class SaleOrderLine(models.Model):
             total_purchase_price = 0
             for subline in line.pack_child_line_ids:
                 product_cost = subline.product_id.standard_price
-                total_purchase_price += subline._convert_price(product_cost, subline.product_id.uom_id)
+                # _convert_price no existe en v17
+                # total_purchase_price += subline._convert_price(product_cost, subline.product_id.uom_id)
             line.purchase_price = total_purchase_price
