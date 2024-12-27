@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "sale_order_quote",
-    "version": "15.0.1.1.0",
+    "version": "17.0.1.0.0",
     "author": "ITSur",
     "website": "",
 
@@ -24,5 +24,5 @@
         'views/sale_order_views.xml',
         'views/product_template_views.xml',        
     ],
-    'installable': False,
+    'installable': True,
 }
