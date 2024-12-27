@@ -57,7 +57,7 @@ class SaleOrder(models.Model):
                             precio_unitario_actual = round(prices[line.product_id.id],2)
                             # import pdb; pdb.set_trace()
                         else:              
-                            precio_unitario_actual = round(self.env['account.tax']._fix_tax_included_price_company(line._get_display_price(product), product.taxes_id, line.tax_id, line.company_id),2)
+                            precio_unitario_actual = round(self.env['account.tax']._fix_tax_included_price_company(line._get_display_price(), product.taxes_id, line.tax_id, line.company_id),2)
 
                         # precio_unitario_actual = round(product._get_tax_included_unit_price(
                         #     line.company_id or line.order_id.company_id,
