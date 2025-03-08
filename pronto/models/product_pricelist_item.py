@@ -63,7 +63,7 @@ class ProductPricelistItem(models.Model):
                 self.fecha_ultima_modificacion_precio = fields.Date.context_today(self)
         return res
        
-    @api.model
+    @api.model_create_multi    
     def create(self,values):
         res = super(ProductPricelistItem,self).create(values)
         if res.pricelist_id == self.env.user.company_id.product_pricelist_cost_id and res.product_tmpl_id:

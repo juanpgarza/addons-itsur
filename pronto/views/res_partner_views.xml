@@ -8,7 +8,7 @@
         <field name="arch" type="xml">
 
             <field name="sale_type" position="attributes">
-                <attribute name="attrs">{'required': [('is_customer','=',True)]}</attribute>
+                <attribute name="required">is_customer</attribute>
             </field>
 
         </field>
@@ -21,11 +21,11 @@
         <field name="arch" type="xml">
 
             <field name="zip_id" position="attributes">
-                <attribute name="attrs">{'required': [('is_customer','=',True),('country_id','=',10)]}</attribute>
+                <attribute name="required">is_customer and country_id == 10</attribute>
             </field>
 
             <field name="country_id" position="attributes">
-                <attribute name="attrs">{'required': [('is_customer','=',True)]}</attribute>
+                <attribute name="required">is_customer</attribute>
             </field>
 
         </field>
@@ -38,15 +38,15 @@
         <field name="arch" type="xml">
 
             <field name="category_id" position="after">
-                <field name="tipo_cliente_id" attrs="{'required': [('is_customer','=',True)]}"/>
+                <field name="tipo_cliente_id" required="is_customer"/>
             </field>
 
             <field name="email" position="attributes">
-                <attribute name="attrs">{'required': True}</attribute>
+                <attribute name="required">True</attribute>
             </field>
 
             <field name="mobile" position="attributes">
-                <attribute name="attrs">{'required': True}</attribute>
+                <attribute name="required">True</attribute>
             </field>
 
         </field>
@@ -97,7 +97,7 @@
         <field name="context">{'default_is_company': True, 'res_partner_search_mode': 'customer'}</field>
     </record>
 
-    <record id="res_partner_view_risk_inherit" model="ir.ui.view">
+    <!-- <record id="res_partner_view_risk_inherit" model="ir.ui.view">
         <field name="name">res.partner.view.risk</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="account_financial_risk.res_partner_view_risk"/>
@@ -106,7 +106,7 @@
                 <attribute name="groups">pronto.group_gestionar_riesgo_financiero</attribute>
             </xpath>
         </field>
-    </record>
+    </record> -->
 
     <!-- # daba error en el upgrade 
         lo cambie al final del archivo y funciono OK
@@ -118,7 +118,7 @@
         <field name="arch" type="xml">
 
             <field name="property_product_pricelist" position="attributes">
-                <attribute name="attrs">{'required': [('is_customer','=',True)]}</attribute>
+                <attribute name="required">is_customer</attribute>
             </field>
 
         </field>

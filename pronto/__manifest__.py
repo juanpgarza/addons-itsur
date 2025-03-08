@@ -21,20 +21,25 @@
 
     # any module necessary for this one to work correctly
     'depends': [
-                'base',
-                'crm',
-                'purchase',
-                'sale_crm',
-                'sale_margin',
-                'stock',
-                'stock_voucher',
-                'stock_picking_invoice_link',
-                'stock_ux',
-                'partner_manual_rank',
-                'product',
-                'mail_activity_board',
-                'project',
+                'base', # core
+                'crm', # core
+                'purchase', # core
+                'sale_crm', # core
+                'sale_margin', # core
+                'stock', # core
+                'sale_stock', # core
+                'stock_voucher', # adhoc
+                'stock_picking_invoice_link', # OCA
+                'stock_ux', # adhoc
+                'partner_manual_rank', # OCA
+                'product', # core
+                'mail_activity_board', # OCA
+                'project', # core
+                'base_location', # OCA
+                'sale_product_pack', # OCA
+                'sale_order_type', # OCA
                 # 'purchase_stock',
+                'account_followup', # core EE
             ],
 
     # always loaded
@@ -44,7 +49,7 @@
         'security/pronto_security.xml',
         'views/product_pricelist_item_history_views.xml',
         'views/project_task_views.xml',
-        'views/mail_activity_view.xml',               
+        # 'views/mail_activity_view.xml',               
         'security/ir.model.access.csv',
         'views/company.xml',
         'views/crm_lead_views.xml',
@@ -56,7 +61,7 @@
         'views/product_pricelist_item_views.xml',
         'views/product_template_views.xml',
         'views/res_users_views.xml',  
-        'views/account_payment_group_views.xml',
+        # 'views/account_payment_group_views.xml',
         'wizards/update_price_views.xml',
         'data/product_stock_data.xml',
         'data/config_parameter.xml',
@@ -65,9 +70,9 @@
         'data/pronto_data.xml',
         'wizards/stock_return_picking_views.xml',
         'views/stock_return_picking_reason_views.xml',
-        'views/sale_portal_templates.xml', # daba error en el upgrade
-        'views/sale_views.xml',
-        'report/sale_report_pronto.xml',
+        # 'views/sale_portal_templates.xml', # daba error en el upgrade
+        # 'views/sale_views.xml',
+        # 'report/sale_report_pronto.xml',
     ],
     'installable': True,
 }

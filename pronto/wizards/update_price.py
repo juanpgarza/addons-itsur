@@ -1,5 +1,5 @@
 from odoo import models, fields, api, _
-from odoo.exceptions import UserError, Warning
+from odoo.exceptions import UserError
 import base64
 from io import BytesIO
 from xlrd import open_workbook
