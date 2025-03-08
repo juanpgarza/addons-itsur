@@ -39,6 +39,7 @@
                 'sale_product_pack', # OCA
                 'sale_order_type', # OCA
                 # 'purchase_stock',
+                'account_followup', # core EE
             ],
 
     # always loaded
@@ -47,7 +48,7 @@
         'views/stock_quant_views.xml',
         'security/pronto_security.xml',
         'views/product_pricelist_item_history_views.xml',
-        # 'views/project_task_views.xml',
+        'views/project_task_views.xml',
         # 'views/mail_activity_view.xml',               
         'security/ir.model.access.csv',
         'views/company.xml',
