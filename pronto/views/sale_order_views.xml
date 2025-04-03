@@ -10,7 +10,7 @@
                 <field name="sale_order_reference" />
             </field>
             <field name="payment_term_id" position="before">
-                <field name="total_due" widget='monetary' decoration-danger="total_due &gt; 0" decoration-success="total_due &lt; 0" invisible="state in ['sale', 'done', 'cancel']"/>
+                <field name="total_due" readonly='True' widget='monetary' decoration-danger="total_due &gt; 0" decoration-success="total_due &lt; 0" invisible="state in ['sale', 'done', 'cancel']"/>
             </field>
             <field name="fiscal_position_id" position="before">
                 <field name="cotizacion"/>

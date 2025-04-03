@@ -53,7 +53,7 @@ class ProductTemplate(models.Model):
             producto = self.env['product.template'].with_context(controlar_requeridos = False,actualizar_costo_producto_fabricado = True).browse(product_tmpl_id)
             # SOLO si no es fabricado (el costo del fabricado se calcula a partir del costo de los componentes)
             if not producto.bom_ids:
-                product_price = pricelist.get_product_price(producto.product_variant_id,cantidad,self.env.user.partner_id)
+                product_price = pricelist._get_product_price(producto.product_variant_id,cantidad,self.env.user.partner_id)
                 producto.standard_price = pricelist.currency_id._convert(product_price,res_currency,res_company,datetime.today())
         else:            
             param = self.env['ir.config_parameter'].sudo()
@@ -82,7 +82,7 @@ class ProductTemplate(models.Model):
                         
                         # monto = 1
                         
-                        product_price = pricelist.get_product_price(rec.product_variant_id,cantidad,self.env.user.partner_id)
+                        product_price = pricelist._get_product_price(rec.product_variant_id,cantidad)
                         rec.standard_price = pricelist.currency_id._convert(product_price,res_currency,res_company,datetime.today())
 
                 if productos_fabricados:
