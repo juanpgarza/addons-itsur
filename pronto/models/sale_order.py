@@ -47,7 +47,7 @@ class SaleOrder(models.Model):
     def write(self, values):
         for order in self:
             if self.user_has_groups('pronto.group_commitment_date_required'):
-                if ('state' in values and order.state != 'done' and values['state'] == 'sale') or 'user_requesting_review' in values:
+                if ('state' in values and order.state != 'done' and values['state'] == 'sale'):
                         if not order.commitment_date:
                             raise ValidationError(
                                     'Debe informar la fecha de compromiso'
@@ -63,6 +63,20 @@ class SaleOrder(models.Model):
                 if lineas_pack_totalizado:
                     lineas_pack_totalizado._compute_purchase_price_totalized_pack()
         return res
+
+    def request_validation(self):
+        # antes de pedir validación se deben informar estos campos
+        # import pdb; pdb.set_trace()
+        for rec in self:
+            if not rec.payment_mode_id:
+                raise ValidationError(
+                        'Debe informar el modo de pago'
+                        )
+            if not rec.commitment_date and self.user_has_groups('pronto.group_commitment_date_required'):
+                raise ValidationError(
+                        'Debe informar la fecha de compromiso'
+                        )
+        return super(SaleOrder,self).request_validation()
 
     def _prepare_invoice(self):
         res = super(SaleOrder, self)._prepare_invoice()
