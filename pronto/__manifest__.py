@@ -40,10 +40,13 @@
                 'sale_order_type', # OCA
                 # 'purchase_stock',
                 'account_followup', # core EE
+                'account_payment_batch_st',
             ],
 
     # always loaded
     'data': [
+        'views/account_payment_views.xml',
+        'views/account_payment_batch_st_views.xml',
         'views/report_deliveryslip.xml',
         'views/stock_quant_views.xml',
         'security/pronto_security.xml',
