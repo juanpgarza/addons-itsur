@@ -21,7 +21,7 @@ class ProductPricelistWizard(models.TransientModel):
     def do_update(self):
         try:
             inputx = BytesIO()
-            inputx.write(base64.decodestring(self.excel_file_for_import))
+            inputx.write(base64.decodebytes(self.excel_file_for_import))
             book = open_workbook(file_contents=inputx.getvalue())
         except TypeError as e:
             raise UserError(u'ERROR: {}'.format(e))
