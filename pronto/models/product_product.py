@@ -5,7 +5,7 @@ class ProductProduct(models.Model):
     _inherit = "product.product"
 
     def _get_domain_locations_new(
-        self, location_ids, company_id=False, compute_child=True
+        self, location_ids
     ):
         """
         This is used to exclude locations if needed
@@ -19,9 +19,7 @@ class ProductProduct(models.Model):
             domain_move_in_loc,
             domain_move_out_loc,
         ) = super()._get_domain_locations_new(
-            location_ids=location_ids,
-            company_id=company_id,
-            compute_child=compute_child,
+            location_ids=location_ids
         )
         excluded_location_ids = self.env['stock.location'].search([]).filtered(lambda x: x.computar_stock_disponible==False)
         if excluded_location_ids:
