@@ -77,5 +77,5 @@
         # 'views/sale_views.xml',
         # 'report/sale_report_pronto.xml',
     ],
-    'installable': True,
+    "installable": False,
 }
