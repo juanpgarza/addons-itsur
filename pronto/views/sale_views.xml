@@ -43,10 +43,10 @@
     <record id="view_order_product_tree" model="ir.ui.view">
         <field name="model">sale.report</field>
         <field name="arch" type="xml">
-            <tree create="false" delete="false" edit="false">
+            <list create="false" delete="false" edit="false">
                 <field name="name"/>
                 <field name="product_id"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -90,7 +90,7 @@
     <record id="action_order_report_all" model="ir.actions.act_window">
         <field name="name">Sales Analysis</field>
         <field name="res_model">sale.report</field>
-        <field name="view_mode">dashboard,tree,form,graph,pivot</field>
+        <field name="view_mode">dashboard,list,form,graph,pivot</field>
         <field name="view_id"></field>  <!-- force empty -->
         <field name="search_view_id" ref="pronto.view_order_product_search"/>
         <field name="context">{'search_default_Sales':1, 'group_by_no_leaf':1,'group_by':[]}</field>

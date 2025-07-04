@@ -54,7 +54,7 @@
             <!-- 
             en v15 no está mas la tree de precios en el form. Ahora se accede a la misma información
             desde el smartbutton "Precio Extra"
-            <xpath expr="//tree/field[@name='fixed_price']" position="replace"> -->
+            <xpath expr="//list/field[@name='fixed_price']" position="replace"> -->
                 <!-- original -->
                 <!-- <field name="fixed_price" string="Price" required="1" widget="monetary" options="{'currency_field': 'currency_id'}"/> -->
                 <!-- le saco el widget -->                
@@ -66,7 +66,7 @@
             <!-- 
             en v15 no está mas la tree de precios en el form. Ahora se accede a la misma información
             desde el smartbutton "Precio Extra"
-            <xpath expr="//tree/field[@name='pricelist_id']" position="attributes">
+            <xpath expr="//list/field[@name='pricelist_id']" position="attributes">
                 <attribute name="domain">[("id", "=", 2)]</attribute>
                 <attribute name="options">{'no_create': True, 'no_open': True}</attribute>
             </xpath> -->

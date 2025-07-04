@@ -24,17 +24,13 @@
             </xpath>
 
             <xpath expr="//sheet" position="after">
-            	<div class="oe_chatter">
-            		<field name="message_follower_ids" widget="mail_followers"/>
-            		<field name="activity_ids" widget="mail_activity"/>
-            		<field name="message_ids" widget="mail_thread"/>
-            	</div>
+            	<chatter/>
             </xpath>
         </field>
     </record>
 
     <record id="product_pricelist_item_tree_view" model="ir.ui.view">
-        <field name="name">product.pricelist.item.tree</field>
+        <field name="name">product.pricelist.item.list</field>
         <field name="model">product.pricelist.item</field>
         <field name="inherit_id" ref="product.product_pricelist_item_tree_view"/>
         <field name="arch" type="xml">

@@ -53,7 +53,7 @@
     </record>
 
     <record id="view_partner_tree_inherit" model="ir.ui.view">
-        <field name="name">res.partner.tree</field>
+        <field name="name">res.partner.list</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_tree"/>
         <field name="arch" type="xml">

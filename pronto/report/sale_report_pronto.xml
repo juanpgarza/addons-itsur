@@ -37,10 +37,10 @@
     </record>
 
     <record id="view_order_product_simple_tree" model="ir.ui.view">
-        <!-- <field name="name">box.session.tree.view</field> -->
+        <!-- <field name="name">box.session.list.view</field> -->
         <field name="model">sale.report.pronto</field>
         <field name="arch" type="xml">
-            <tree create="false" delete="false" edit="false">
+            <list create="false" delete="false" edit="false">
                 <!-- <field name="id"/> -->
                 <field name="name"/>                
                 <field name="date"/>                
@@ -54,7 +54,7 @@
                 <field name="porcentaje"/>
                 <field name="cotizacion"/>
                 <field name="precio_total_usd"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -135,7 +135,7 @@
     <record id="action_order_report_all_simple" model="ir.actions.act_window">
         <field name="name">Análisis de ventas</field>
         <field name="res_model">sale.report.pronto</field>
-        <field name="view_mode">dashboard,tree,graph,form</field>
+        <field name="view_mode">dashboard,list,graph,form</field>
         <field name="view_id" ref="sale_report_view_pivot_simple" />
         <field name="search_view_id" ref="view_order_product_simple_search"/>
         <field name="context">{'search_default_confirm_month': 1,'search_default_Sales': 1}</field>

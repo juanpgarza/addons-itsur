@@ -13,7 +13,7 @@
     </record>
 
     <record model="ir.ui.view" id="view_task_tree2_inherit">
-        <field name="name">project.task.tree</field>
+        <field name="name">project.task.list</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_tree2"/>
         <field name="arch" type="xml">

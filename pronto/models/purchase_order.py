@@ -86,6 +86,6 @@ class PurchaseOrder(models.Model):
 
     def write(self, values):
         # import pdb; pdb.set_trace()
-        if self.user_has_groups('pronto.group_compras_solo_lectura_ordenes_compra'):
+        if self.env.user.has_group('pronto.group_compras_solo_lectura_ordenes_compra'):
             raise ValidationError("Su usuario solo está habilitado para escribir en el chatter ")
         super(PurchaseOrder,self).write(values)

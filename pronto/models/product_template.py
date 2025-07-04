@@ -106,7 +106,7 @@ class ProductTemplate(models.Model):
                     raise UserError("El Tipo de producto de los packs debe ser 'Servicio'")
 
             # Perform validation for saleable products
-            if not self.user_has_groups('pronto.group_no_exigir_campos_producto_vendible'):
+            if not self.env.user.has_group('pronto.group_no_exigir_campos_producto_vendible'):
                 mensaje_validacion = ""
                 if val.get('sale_ok') and val.get('type') == 'product':
                     if val.get('weight', 0) == 0:
@@ -140,7 +140,7 @@ class ProductTemplate(models.Model):
         controlar_requeridos = self.env.context.get('controlar_requeridos', True)
 
         if controlar_requeridos:
-            if not self.user_has_groups('pronto.group_no_exigir_campos_producto_vendible'):
+            if not self.env.user.has_group('pronto.group_no_exigir_campos_producto_vendible'):
                 for rec in self:
                     mensaje_validacion = ""
                     if rec.type == 'product' and rec.sale_ok and rec.weight == 0:

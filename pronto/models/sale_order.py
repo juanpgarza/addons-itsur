@@ -46,14 +46,14 @@ class SaleOrder(models.Model):
 
     def write(self, values):
         for order in self:
-            if self.user_has_groups('pronto.group_commitment_date_required'):
+            if self.env.user.has_group('pronto.group_commitment_date_required'):
                 if ('state' in values and order.state != 'done' and values['state'] == 'sale'):
                         if not order.commitment_date:
                             raise ValidationError(
                                     'Debe informar la fecha de compromiso'
                                     )
 
-            if self.user_has_groups('pronto.group_ventas_solo_lectura_pedidos'):
+            if self.env.user.has_group('pronto.group_ventas_solo_lectura_pedidos'):
                 raise ValidationError("Su usuario solo está habilitado para escribir en el chatter ")
 
         res = super(SaleOrder, self).write(values)
@@ -72,7 +72,7 @@ class SaleOrder(models.Model):
                 raise ValidationError(
                         'Debe informar el modo de pago'
                         )
-            if not rec.commitment_date and self.user_has_groups('pronto.group_commitment_date_required'):
+            if not rec.commitment_date and self.env.user.has_group('pronto.group_commitment_date_required'):
                 raise ValidationError(
                         'Debe informar la fecha de compromiso'
                         )
