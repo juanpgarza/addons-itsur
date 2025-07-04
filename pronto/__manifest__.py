@@ -31,7 +31,7 @@
                 'stock_voucher', # adhoc
                 'stock_picking_invoice_link', # OCA
                 'stock_ux', # adhoc
-                'partner_manual_rank', # OCA
+                # 'partner_manual_rank', No esta migrado a v18
                 'product', # core
                 'mail_activity_board', # OCA
                 'project', # core
@@ -40,39 +40,40 @@
                 'sale_order_type', # OCA
                 # 'purchase_stock',
                 'account_followup', # core EE
-                'account_payment_batch_st',
+                'product_ux', # adhoc
+                # 'account_payment_batch_st',
             ],
 
     # always loaded
     'data': [
         'views/account_payment_views.xml',
-        'views/account_payment_batch_st_views.xml',
-        'views/report_deliveryslip.xml',
-        'views/stock_quant_views.xml',
+        # 'views/account_payment_batch_st_views.xml',
+        # 'views/report_deliveryslip.xml',
+        # 'views/stock_quant_views.xml',
         'security/pronto_security.xml',
-        'views/product_pricelist_item_history_views.xml',
-        'views/project_task_views.xml',
+        # 'views/product_pricelist_item_history_views.xml',
+        # 'views/project_task_views.xml',
         # 'views/mail_activity_view.xml',               
-        'security/ir.model.access.csv',
+        # 'security/ir.model.access.csv',
         'views/company.xml',
         'views/crm_lead_views.xml',
-        'views/report_stockpicking.xml',
-        'views/res_partner_views.xml',
-        'views/sale_order_views.xml',
-        'views/sale_tipo_cliente_views.xml',
-        'views/stock_picking_views.xml',
+        # 'views/report_stockpicking.xml',
+        # 'views/res_partner_views.xml',
+        # 'views/sale_order_views.xml',
+        # 'views/sale_tipo_cliente_views.xml',
+        # 'views/stock_picking_views.xml',
         'views/product_pricelist_item_views.xml',
-        'views/product_template_views.xml',
-        'views/res_users_views.xml',  
+        # 'views/product_template_views.xml',
+        # 'views/res_users_views.xml',  
         # 'views/account_payment_group_views.xml',
-        'wizards/update_price_views.xml',
-        'data/product_stock_data.xml',
-        'data/config_parameter.xml',
-        'views/stock_location_views.xml',
-        'views/report_stockpicking_operations.xml',        
-        'data/pronto_data.xml',
-        'wizards/stock_return_picking_views.xml',
-        'views/stock_return_picking_reason_views.xml',
+        # 'wizards/update_price_views.xml',
+        # 'data/product_stock_data.xml',
+        # 'data/config_parameter.xml',
+        # 'views/stock_location_views.xml',
+        # 'views/report_stockpicking_operations.xml',        
+        # 'data/pronto_data.xml',
+        # 'wizards/stock_return_picking_views.xml',
+        # 'views/stock_return_picking_reason_views.xml',
         # 'views/sale_portal_templates.xml', # daba error en el upgrade
         # 'views/sale_views.xml',
         # 'report/sale_report_pronto.xml',
