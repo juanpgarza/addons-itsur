@@ -81,7 +81,7 @@
         <field name="arch" type="xml">
 
             <field name="default_code" position="attributes">
-                <attribute name="required">type == 'product'</attribute>
+                <attribute name="required">type == 'consu'</attribute>
             </field>
 
             <!-- así tambien funciona 
@@ -90,7 +90,7 @@
             </field> -->
 
             <field name="description_sale" position="attributes">
-                <attribute name="required">type == 'product' and sale_ok</attribute>
+                <attribute name="required">type == 'consu' and sale_ok</attribute>
             </field>
 
         </field>

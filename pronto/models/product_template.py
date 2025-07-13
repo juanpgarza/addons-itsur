@@ -90,52 +90,47 @@ class ProductTemplate(models.Model):
 
                 _logger.info("Se actualizo el costo de %d productos.", len(materias_primas) + len(productos_fabricados))
 
-    @api.model_create_multi
-    def create(self, values):
-        # Ensure that the input is a list for batch creation
-        if not isinstance(values, list):
-            raise ValueError(f"Expected list for 'values', got {type(values)}: {values}")
+    @api.model
+    def create(self, val):
+        
+        # Validate 'type' and 'pack_ok' fields
+        if 'type' in val and 'pack_ok' in val:
+            if val['pack_ok'] and val['type'] != 'service':
+                raise UserError("El Tipo de producto de los packs debe ser 'Servicio'")
+        
+        # import pdb; pdb.set_trace()
+        
+        # Perform validation for saleable products
+        if not self.env.user.has_group('pronto.group_no_exigir_campos_producto_vendible'):
+            mensaje_validacion = ""
+            if val.get('sale_ok') and val.get('type') == 'consu' and val.get('is_storable'):
+                if val.get('weight', 0) == 0:
+                    mensaje_validacion += "- peso \n"
+                if val.get('volume', 0) == 0:
+                    mensaje_validacion += "- volumen \n"
+                if not val.get('image_1920'):
+                    mensaje_validacion += "- imagen del producto \n"
+                if not val.get('barcode'):
+                    mensaje_validacion += "- codigo de barras \n"
+                if not val.get('seller_ids'):
+                    mensaje_validacion += "- Proveedor \n"
 
-        for val in values:
-            if not isinstance(val, dict):  # Ensure each item is a dictionary
-                raise ValueError(f"Expected dictionary for each record in 'values', got {type(val)}: {val}")
-
-            # Validate 'type' and 'pack_ok' fields
-            if 'type' in val and 'pack_ok' in val:
-                if val['pack_ok'] and val['type'] != 'service':
-                    raise UserError("El Tipo de producto de los packs debe ser 'Servicio'")
-
-            # Perform validation for saleable products
-            if not self.env.user.has_group('pronto.group_no_exigir_campos_producto_vendible'):
-                mensaje_validacion = ""
-                if val.get('sale_ok') and val.get('type') == 'product':
-                    if val.get('weight', 0) == 0:
-                        mensaje_validacion += "- peso \n"
-                    if val.get('volume', 0) == 0:
-                        mensaje_validacion += "- volumen \n"
-                    if not val.get('image_1920'):
-                        mensaje_validacion += "- imagen del producto \n"
-                    if not val.get('barcode'):
-                        mensaje_validacion += "- codigo de barras \n"
-                    if not val.get('seller_ids'):
-                        mensaje_validacion += "- Proveedor \n"
-
-                if mensaje_validacion:
-                    raise ValidationError(
-                        "Debe completar los siguientes campos para que el producto pueda ser vendido: \n\n" + mensaje_validacion
-                    )
+            if mensaje_validacion:
+                raise ValidationError(
+                    "Debe completar los siguientes campos para que el producto pueda ser vendido: \n\n" + mensaje_validacion
+                )
 
         # Call the super method to create records
-        res = super(ProductTemplate, self).create(values)
+        res = super(ProductTemplate, self).create(val)
         return res
 
 
     def write(self, values):
         super(ProductTemplate,self).write(values)
-        # en v15 no usamos módulos product_pack        
-        # if 'type' in values or 'pack_ok' in values:
-        #     if self.pack_ok and self.type !='service':
-        #         raise UserError("El Tipo de producto de los pack´s debe ser 'Servicio'")
+
+        if 'type' in values or 'pack_ok' in values:
+            if self.pack_ok and self.type !='service':
+                raise UserError("El Tipo de producto de los pack´s debe ser 'Servicio'")
         
         controlar_requeridos = self.env.context.get('controlar_requeridos', True)
 
@@ -143,29 +138,29 @@ class ProductTemplate(models.Model):
             if not self.env.user.has_group('pronto.group_no_exigir_campos_producto_vendible'):
                 for rec in self:
                     mensaje_validacion = ""
-                    if rec.type == 'product' and rec.sale_ok and rec.weight == 0:
-                        mensaje_validacion += "- peso \n"
+                    if rec.sale_ok and rec.type == 'consu' and rec.is_storable:
+                        if rec.weight == 0:
+                            mensaje_validacion += "- peso \n"
 
-                    if rec.type == 'product' and rec.sale_ok and rec.volume == 0:
-                        mensaje_validacion += "- volumen \n"
+                        if rec.volume == 0:
+                            mensaje_validacion += "- volumen \n"
 
-                    if rec.type == 'product' and rec.sale_ok and not rec.image_1920:
-                        mensaje_validacion += "- imagen del producto \n"
+                        if  not rec.image_1920:
+                            mensaje_validacion += "- imagen del producto \n"
 
-                    if rec.type == 'product' and rec.sale_ok and not rec.barcode:
-                        mensaje_validacion += "- codigo de barras \n"
+                        if  not rec.barcode:
+                            mensaje_validacion += "- codigo de barras \n"
 
-                    # en v15 no está mas la tree de precios en el form. Ahora se accede a la misma información
-                    # desde el smartbutton "Precio Extra"
-                    # if rec.type == 'product' and rec.sale_ok:
-                    #     item_lista_precio = rec.item_ids.filtered(lambda x: x.pricelist_id.id == 2)
-                    #     if not item_lista_precio:
-                    #         mensaje_validacion += "- el precio en la tarifa Costo \n"
-                    #     else:
-                    #         if item_lista_precio.compute_price == 'fixed' and item_lista_precio.fixed_price == 0:
-                    #             mensaje_validacion += "- el precio (distinto de 0) en la tarifa Costo \n"
+                        # en v15 no está mas la tree de precios en el form. Ahora se accede a la misma información
+                        # desde el smartbutton "Precio Extra"
+                        # if rec.type == 'product' and rec.sale_ok:
+                        #     item_lista_precio = rec.item_ids.filtered(lambda x: x.pricelist_id.id == 2)
+                        #     if not item_lista_precio:
+                        #         mensaje_validacion += "- el precio en la tarifa Costo \n"
+                        #     else:
+                        #         if item_lista_precio.compute_price == 'fixed' and item_lista_precio.fixed_price == 0:
+                        #             mensaje_validacion += "- el precio (distinto de 0) en la tarifa Costo \n"
 
-                    if rec.type == 'product' and rec.sale_ok:
                         proveedores = rec.seller_ids
                         if not proveedores:
                             mensaje_validacion += "- Proveedor \n"
@@ -174,13 +169,13 @@ class ProductTemplate(models.Model):
                             if proveedor.price == 0:
                                 mensaje_validacion += "- el precio en el proveedor \n"
 
-                    if mensaje_validacion:
-                        detalle_mensaje = mensaje_validacion
-                        mensaje_validacion = ""
-                        raise ValidationError("Ref. Interna: {} \n\n Debe completar los siguientes campos para que el producto pueda ser vendido: \n\n {}".format(
-                                                    rec.default_code,
-                                                    detalle_mensaje
-                                            ))
+                        if mensaje_validacion:
+                            detalle_mensaje = mensaje_validacion
+                            mensaje_validacion = ""
+                            raise ValidationError("Ref. Interna: {} \n\n Debe completar los siguientes campos para que el producto pueda ser vendido: \n\n {}".format(
+                                                        rec.default_code,
+                                                        detalle_mensaje
+                                                ))
 
         actualizar_costo_producto_fabricado = self.env.context.get('actualizar_costo_producto_fabricado', True)
         # standard_price solo se actualiza desde el backend (por código: al cambiar el precio en la lista de costo o por tarea programada)
@@ -193,4 +188,4 @@ class ProductTemplate(models.Model):
                     # recalculo el costo del producto fabricado
                     line.bom_id.product_tmpl_id.action_bom_cost()
 
-        return
+        return True
