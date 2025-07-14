@@ -43,6 +43,8 @@
                 'product_ux', # adhoc
                 # 'account_payment_batch_st',
                 'sale_stock_ux',
+                'mrp',
+                'web_notify',
             ],
 
     # always loaded

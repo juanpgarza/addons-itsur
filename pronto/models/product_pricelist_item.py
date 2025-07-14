@@ -73,7 +73,7 @@ class ProductPricelistItem(models.Model):
         return res
     
     def set_fixed_price(self,item_id,product_tmpl_id,fixed_price):
-        item_history = self.env["product.pricelist.item.history"]
+        item_history = self.env["product.pricelist.item.history"].sudo()
         item_history.create({
             'product_tmpl_id': product_tmpl_id,
             'fixed_price': fixed_price,
