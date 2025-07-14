@@ -8,8 +8,8 @@ from odoo.tools.float_utils import float_round
 class ReturnPickingPronto(models.TransientModel):
     _inherit = 'stock.return.picking'
 
-    def _create_returns(self):
-
+    def _create_return(self):
+              
         in_out = self.picking_id.picking_type_id.code
 
         if in_out == 'outgoing':
@@ -31,6 +31,6 @@ class ReturnPickingPronto(models.TransientModel):
 
         # esta heredando desde stock_ux. ahí _create_returns retorna estos
         # dos valores. por eso se hace así
-        new_picking, pick_type_id = super()._create_returns()
+        new_picking = super()._create_return()
 
-        return new_picking, pick_type_id
+        return new_picking

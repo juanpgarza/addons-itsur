@@ -42,6 +42,7 @@
                 'account_followup', # core EE
                 'product_ux', # adhoc
                 # 'account_payment_batch_st',
+                'sale_stock_ux',
             ],
 
     # always loaded
