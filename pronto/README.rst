@@ -20,7 +20,9 @@ Adaptaciones solicitadas por Pronto:
 #. Grupo de seguridad para tener acceso de solo lectura al presupuesto/pedido pero pudiendo escribir en el chatter
 #. Campo Referencia de Presupuesto / Pedido
 #. Diario de facturación por defecto para el usuario
-#. Planificador inteligente Pronto
+#. Planificador inteligente Pronto 
+    . el metodo de reserva debe estar configurado como 'Manual' en el tipo de operacion
+    . accion planificada diaria que ejecuta model.run_smart_scheduler()
 #. Bloqueo: No permite validar entregas que tiene asociado pedido con productos pendiente de facturar
 #. Bloqueo: No permite validar entregas que tienen asociadas facturas en estado "Borrador" (requiere de módulo de OCA)
 #. Mostrar el tipo de venta en la orden de entrega
