@@ -60,7 +60,7 @@
         'security/ir.model.access.csv',
         'views/company.xml',
         'views/crm_lead_views.xml',
-        # 'views/report_stockpicking.xml',
+        'views/report_stockpicking.xml', # remito pronto
         # 'views/res_partner_views.xml', --> al 07/07/2025 no esta migrado partner_manual_rank
         'views/sale_order_views.xml',
         'views/sale_tipo_cliente_views.xml',

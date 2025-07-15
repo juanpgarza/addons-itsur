@@ -79,7 +79,7 @@ class StockPicking(models.Model):
             # movimientos que todavía no tienen remitos asignados
             moves = self.env['stock.move'].search(['&',('picking_id','=',self.id),('picking_voucher_id','=',False)])
             renglon = 0
-            for move in moves.filtered(lambda x: x.quantity_done):
+            for move in moves.filtered(lambda x: x.quantity):
                 move.write({'picking_voucher_id': voucher.id})
                 renglon = renglon + 1
                 if renglon >= cantidad_renglones:

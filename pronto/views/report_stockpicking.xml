@@ -108,7 +108,7 @@
                                         </t>
                                     </div>
                                     <div class="col-2 text-center">
-                                        <span><t t-esc="move.quantity_done" /></span>
+                                        <span><t t-esc="move.quantity" /></span>
                                     </div>
                                 </div>
                             </t>
@@ -133,7 +133,7 @@
                                             <span><t t-esc="line.qty_done" /></span>
                                         </t>
                                         <t t-else="">
-                                            <span><t t-esc="move.quantity_done" /></span>
+                                            <span><t t-esc="move.quantity" /></span>
                                         </t>                                        
                                     </div>
                                 </div>
