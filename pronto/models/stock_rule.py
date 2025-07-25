@@ -12,30 +12,11 @@ import datetime
 class ProcurementGroup(models.Model):
     _inherit = 'procurement.group'
 
-    # DA ESTE ERROR!!
-# TypeError: ProcurementGroup._get_moves_to_assign_domain() takes 1 positional argument but 2 were given
-
-# During handling of the above exception, another exception occurred:
-
-# Traceback (most recent call last):
-#   File "/opt/odoo/odoo/addons/base/models/ir_cron.py", line 570, in _callback
-#     self.env['ir.actions.server'].browse(server_action_id).run()
-#   File "/opt/odoo/odoo/addons/base/models/ir_actions.py", line 995, in run
-#     res = runner(run_self, eval_context=eval_context)
-#           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-#   File "/opt/odoo/odoo/addons/base/models/ir_actions.py", line 827, in _run_action_code_multi
-#     safe_eval(self.code.strip(), eval_context, mode="exec", nocopy=True, filename=str(self))  # nocopy allows to return 'action'
-#     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-#   File "/opt/odoo/odoo/tools/safe_eval.py", line 411, in safe_eval
-#     raise ValueError('%r while evaluating\n%r' % (e, expr))
-# ValueError: TypeError('ProcurementGroup._get_moves_to_assign_domain() takes 1 positional argument but 2 were given') while evaluating
-# 'model.run_scheduler(True)'
-        
-    # @api.model
-    # def _get_moves_to_assign_domain(self):
-    #     # de esta manera desactivo la parte del planificador que
-    #     # que reserva el stock
-    #     return [('id','=',0)]
+    @api.model
+    def _get_moves_to_assign_domain(self, company_id):
+        # de esta manera desactivo la parte del planificador que
+        # que reserva el stock
+        return [('id','=',0)]
 
     @api.model
     def run_smart_scheduler(self, picking_id = 0):
