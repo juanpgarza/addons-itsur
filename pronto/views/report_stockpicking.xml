@@ -28,7 +28,10 @@
                         <br/>
                         <br/>                                    
                         <div class="row">
-                            <div class="col-8 text-right">
+                            <div class="col-7 text-right">
+                                <span/>
+                            </div>                             
+                            <div class="col-1 text-right">
                                 <span t-field="o.date_done" t-options='{"format": "dd"}'/>
                             </div>                            
                             <div class="col-1 text-center">
